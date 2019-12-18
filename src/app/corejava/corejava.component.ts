@@ -1,0 +1,202 @@
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-corejava',
+  templateUrl: './corejava.component.html',
+  styleUrls: ['./corejava.component.css']
+})
+export class CorejavaComponent implements OnInit {
+
+  constructor() { }
+
+  languagefundamental1:boolean=true;
+  exception:boolean=false;
+  decandaccess:boolean=false;
+  flwc:boolean=false;
+  assertion:boolean=false;
+  ooconcept:boolean=false;
+  innerclass:boolean=false;
+  threadcon:boolean=false;
+  fundclass:boolean=false;
+  ioseriz:boolean=false;
+  garbage:boolean=false;
+  collection:boolean=false;
+ 
+  ngOnInit() {
+    
+  }
+ 
+  languagefundamentals(){
+    this.languagefundamental1=true;
+    this.exception=false;
+    this.assertion=false;
+    this.collection=false;
+    this.decandaccess=false;
+    this.flwc=false;
+    this.ooconcept=false;
+    this.garbage=false;
+    this.fundclass=false;
+    this.ioseriz=false;
+    this.threadcon=false;
+    this.innerclass=false;
+  }
+
+  exceptionhandling(){
+    this.languagefundamental1=false;
+    this.exception=true;
+    this.assertion=false;
+    this.collection=false;
+    this.decandaccess=false;
+    this.flwc=false;
+    this.ooconcept=false;
+    this.garbage=false;
+    this.fundclass=false;
+    this.ioseriz=false;
+    this.threadcon=false;
+    this.innerclass=false;
+
+  }
+
+  declareandaccesscontrol(){
+    this.languagefundamental1=false;
+    this.exception=false;
+    this.assertion=false;
+    this.collection=false;
+    this.decandaccess=true;
+    this.flwc=false;
+    this.ooconcept=false;
+    this.garbage=false;
+    this.fundclass=false;
+    this.ioseriz=false;
+    this.threadcon=false;
+    this.innerclass=false;
+  }
+
+  flowcontrol(){
+    this.languagefundamental1=false;
+    this.exception=false;
+    this.assertion=false;
+    this.collection=false;
+    this.decandaccess=false;
+    this.flwc=true;
+    this.ooconcept=false;
+    this.garbage=false;
+    this.fundclass=false;
+    this.ioseriz=false;
+    this.threadcon=false;
+    this.innerclass=false;
+  }
+
+  assertions(){
+    this.languagefundamental1=false;
+    this.exception=false;
+    this.assertion=true;
+    this.collection=false;
+    this.decandaccess=false;
+    this.flwc=false;
+    this.ooconcept=false;
+    this.garbage=false;
+    this.fundclass=false;
+    this.ioseriz=false;
+    this.threadcon=false;
+    this.innerclass=false;
+  }
+  ooconcepts(){
+    this.languagefundamental1=false;
+    this.exception=false;
+    this.assertion=false;
+    this.collection=false;
+    this.decandaccess=false;
+    this.flwc=false;
+    this.ooconcept=true;
+    this.garbage=false;
+    this.fundclass=false;
+    this.ioseriz=false;
+    this.threadcon=false;
+    this.innerclass=false;
+  }
+  innerclasses(){
+    this.languagefundamental1=false;
+    this.exception=false;
+    this.assertion=false;
+    this.collection=false;
+    this.decandaccess=false;
+    this.flwc=false;
+    this.ooconcept=false;
+    this.garbage=false;
+    this.fundclass=false;
+    this.ioseriz=false;
+    this.threadcon=false;
+    this.innerclass=true;
+  }
+  threadconcurrency(){
+    this.languagefundamental1=false;
+    this.exception=false;
+    this.assertion=false;
+    this.collection=false;
+    this.decandaccess=false;
+    this.flwc=false;
+    this.ooconcept=false;
+    this.garbage=false;
+    this.fundclass=false;
+    this.ioseriz=false;
+    this.threadcon=true;
+    this.innerclass=false;
+  }
+  fundamentalclasses(){
+    this.languagefundamental1=false;
+    this.exception=false;
+    this.assertion=false;
+    this.collection=false;
+    this.decandaccess=false;
+    this.flwc=false;
+    this.ooconcept=false;
+    this.garbage=false;
+    this.fundclass=true;
+    this.ioseriz=false;
+    this.threadcon=false;
+    this.innerclass=false;
+  }
+  ioserialization(){
+    this.languagefundamental1=false;
+    this.exception=false;
+    this.assertion=false;
+    this.collection=false;
+    this.decandaccess=false;
+    this.flwc=false;
+    this.ooconcept=false;
+    this.garbage=false;
+    this.fundclass=false;
+    this.ioseriz=true;
+    this.threadcon=false;
+    this.innerclass=false;
+  }
+  garbagecollector(){
+    this.languagefundamental1=false;
+    this.exception=false;
+    this.assertion=false;
+    this.collection=false;
+    this.decandaccess=false;
+    this.flwc=false;
+    this.ooconcept=false;
+    this.garbage=true;
+    this.fundclass=false;
+    this.ioseriz=false;
+    this.threadcon=false;
+    this.innerclass=false;
+  }
+  collectionfw(){
+    this.languagefundamental1=false;
+    this.exception=false;
+    this.assertion=false;
+    this.collection=true;
+    this.decandaccess=false;
+    this.flwc=false;
+    this.ooconcept=false;
+    this.garbage=false;
+    this.fundclass=false;
+    this.ioseriz=false;
+    this.threadcon=false;
+    this.innerclass=false;
+  }
+}

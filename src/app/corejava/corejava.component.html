@@ -1,0 +1,539 @@
+ 
+ <div class="d-flex" id="wrapper">
+   <div class="bg-light border-right" id="sidebar-wrapper">
+      <div class="list-group list-group-flush">
+        <a (click)="languagefundamentals()" class="list-group-item list-group-item-action bg-light">Language Fundamentals</a>
+        <a (click)="declareandaccesscontrol()" class="list-group-item list-group-item-action bg-light">Declar. & Access Control</a>
+        <a (click)="flowcontrol()" class="list-group-item list-group-item-action bg-light">Flow Control</a>
+        <a (click)="exceptionhandling()" class="list-group-item list-group-item-action bg-light">Exception Handling</a>
+        <a (click)="assertions()" class="list-group-item list-group-item-action bg-light">Assertions</a>
+        <a (click)="ooconcepts()" class="list-group-item list-group-item-action bg-light">OO Concepts</a>
+        <a (click)="innerclasses()" class="list-group-item list-group-item-action bg-light">Inner Classes</a>
+        <a (click)="threadconcurrency()" class="list-group-item list-group-item-action bg-light">Thread and Concurrency</a>
+        <a (click)="fundamentalclasses()" class="list-group-item list-group-item-action bg-light">Fundamental Classes</a>
+        <a (click)="ioserialization()" class="list-group-item list-group-item-action bg-light">I/O & Serialization</a>
+        <a (click)="garbagecollector()" class="list-group-item list-group-item-action bg-light">Garbage Collection</a>
+        <a (click)="collectionfw()" class="list-group-item list-group-item-action bg-light">Collections FW & Generics</a>
+      </div>
+   </div>
+
+   <div class="container-fluid">
+     <div class="languagefundamentals" *ngIf="languagefundamental1">  
+        <h1 class="mt-4">LANGUAGE FUNDAMENTALS</h1>
+      <ol>
+        <li>Identifiers</li>
+        <li>Keywords</li>
+        <li>Datatypes</li>
+        <li>Literals</li>
+        <li>Arrays</li>
+        <li>Types of variables</li>
+        <li>var – arg methods</li>
+        <li>command line arguments & main method</li>
+        <li>java coding standards</li>
+      </ol> 
+     <p><b>Identifiers:</b><br>
+      A name in the program is an identifier it may be class name or method name,variable name or label name.</p>
+       <p>Ex:- <br>
+              <img src="assets/images/identifier.png">
+       </p>
+        <p><b>Rules for defining Identifiers</b></p>
+        <ol>
+           <li>A java identifier is a sequence of characters, where each character may be a letter from a-z or A-Z
+or a digit form 0-9 or currency symbol $ or connecting punctuation – , if we are using any other
+symbol we will get Compile time error “IllegalCharacter”.</li>
+         <li>Identifier should not be starts with digit.</li>
+         <li>There is no length limit for java identifiers but it is not recommended to take more than 15
+length.</li>
+        <li>Java Identifiers are case sensitive</li>
+        <img src="assets/images/identifier1.png" id="identifier1">
+        <img src="assets/images/identifier2.png" id="identifier1">
+        </ol>
+        
+         <p><b>Reserved Words</b></p>
+<p>Some identifiers are reserved to associate some functionality or to represent values, such type of reserved
+identifiers are called “ReservedWords”.</p>
+<img src="assets/images/reserved.png" id="reserved">
+
+<p><b>Keywords for Datatypes</b></p>
+ 
+   <ul>
+       <li>byte  |  short</li>
+       <li>int   | long</li>
+       <li>float | double</li>
+       <li>char  | boolean</li>
+        
+   </ul>
+
+   <p><b>Keywords for FlowControl</b></p>
+      <ul>
+         <li>if | else | switch | case | default | do | while | for | break  | continue | return</li>
+      </ul>
+
+   <p><b>Keywords for ExceptionHandling</b></p>
+      <ul>
+         <li>try | catch | finally | throw | throws | assert (JAVA 1.4V)</li>
+      </ul>
+   <p><b>Keywords for Modifiers</b></p>
+      <ul>
+         <li>public | private | protected | final | abstract | static | native | synchronized | volatile | transient | strictfp</li>
+      </ul>
+     <p><b>Class Related Keywords</b></p>
+      <ul>
+         <li>class | interface | package | extends | implements | import</li>
+      </ul>
+      <p><b>Object Related Keywords</b></p>
+      <ul>
+         <li>new | instanceof | super | this</li>
+      </ul>
+
+     <p><b>void return type Keywords</b></p>
+     <p>if a method doesn’t return anything compulsory that method should be with void return type.</p>
+
+    <p><b>UnUsed Keywords</b></p>
+        <ul>
+           <li>goto -> in java usage is considered as harmful.</li>
+           <li>const -> alternatively we should use final keyword.</li>
+        </ul>
+
+      <p><b>Enum Keyword</b></p>
+      <p>This keyword has introduced in 1.5 version, to define user defined data types.</p>
+      <img src="assets/images/enum.png" id="enum">
+      <img src="assets/images/reservedliterals.png" id="enum">
+
+      <p><b>Datatypes</b></p>
+      <p>In java every variable has a type, every expression has a type and all types are strictly defined.
+All the assignments should be checked by the compiler for the type compatibility. Hence java language
+considers as strongly typed language.
+Java is not considered as pure object oriented programming language because several OOP features(like
+multiple inheritance, operator overloading) are not supported by java. Even java contains non-object
+primitive datatypes.</p>
+<img src="assets/images/primitivedatatypes.png" id="primitivedatatype">
+
+<p>Except boolean and char all the remaining datatypes are signed datatypes i.e we can represent both +ve and
+–ve numbers.</p>
+
+  <p><b>byte</b><br>
+Size : 8-bits<br>
+Range: -128 to 127<br>
+-ve numbers can represented in 2’s compliment form.<br>
+Ex:<br>
+byte b = 10;<br>
+byte b = 127;<br>
+byte b = 130; <i class="fa fa-arrow-right"></i><span style="color:red">C.E: possible loss of precision</span><br>
+byte b = true; <i class="fa fa-arrow-right"></i><span style="color:red">C.E: Incompatible types found: boolean required: byte</span><br>
+byte datatype is best suitable if we are handling data either from file or form network.</p>
+
+
+<p><b>short</b> <br>
+size = 2 bytes<br>
+range = -215 to 215 -1 (-32768 to 32767)<br>
+Ex:<br>
+short s = 10;<br>
+short s = 32767;<br>
+short s = 65535;<i class="fa fa-arrow-right"></i> C.E: possible loss of precision.<br>
+short s = true; <i class="fa fa-arrow-right"></i> C.E: Incompatible types<br>
+short is best suitable datatype for 16-bit process. But currently these are completely out dated and
+hence the corresponding datatypes also no one is using.</p>
+
+<p><b>int</b><br>
+The most commonly used datatype is int.<br>
+size = 4 bytes<br>
+range = -231 to 231 – 1(-2147483648 to 2147483747)<br>
+The size of int is always fixed irrespective of platform hence the chance of failing java program is
+very less if u r changing the platform hence the java is considered as Robust.</p>
+<p><b>long</b><br>
+if int is not enough to hold big values then we should go for long-datatype<br>
+size = 8 bytes<br>
+range = -263 to 263 – 1<br>
+Ex:
+The amount of distance traveled by light in 1000days can be represented by long
+datatype only and int is not enough.</p>
+
+<img src="assets/images/floating.png" id="floating">
+
+<p><b>boolean datatye</b><br>
+size = not applicable(virtual machine dependent).<br>
+range = not applicable but allowed values are true/false.<br>
+Which of the following boolean declarations are valid<br>
+boolean b1 = true;<i class="fa fa-check" style="color: blue; margin-left: 10px;"></i><br>
+boolean b2 = 0; <i class="fa fa-close" style="color: red; margin-left: 10px;"></i><i class="fa fa-arrow-right" style="margin-left: 20px;"></i> Incompatible types found:int required : boolean<br>
+boolean b3 = TRUE; <i class="fa fa-close" style="color: red;margin-left: 10px;"></i><i class="fa fa-arrow-right" style="margin-left: 20px;"></i> capital TRUE is not valid.</p>
+
+    <textarea rows="11" cols="60" class="textArea" readonly>
+      Ex:
+      int x = 0;
+      if(x)
+      {
+      System.out.println("Hello");
+      }
+      else
+      {
+      System.out.println("Hai");
+      }
+    </textarea>
+     <p>
+      <b>OUTPUT</b><i class="fa fa-arrow-right" style="margin-left: 10px;"></i><span class="output"> C.E: Incompatible types found :int required: boolean.</span>
+     </p>
+     <img src="assets/images/char.png" id="floating">
+     <p><b>Comparison table for java primitive datatypes</b></p>
+          
+     <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">datatype</th>
+          <th scope="col">size</th>
+          <th scope="col">range</th>
+          <th scope="col">Default value</th>
+          <th scope="col">Wrapper class</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+         <th scope="row">byte</th>
+         <td>1 byte</td>
+         <td>-128 to 127</td>
+         <td>0</td>
+         <td>Byte</td>
+      </tr>
+        <tr>
+         <th scope="row">short</th>
+          <td>2 bytes</td>
+          <td>-32768 to 32767</td>
+          <td>0</td>
+          <td>Short</td>
+        </tr>
+        <tr>
+         <th scope="row">int</th>
+          <td>4 bytes</td>
+          <td>-231 to 231-1</td>
+          <td>0</td>
+          <td>Integer</td>
+        </tr>
+        <tr>
+         <th scope="row">long</th>
+         <td>8 bytes</td>
+         <td>-263 to 263-1</td>
+         <td>0</td>
+         <td>Long</td>
+        </tr>
+        <tr>
+         <th scope="row">float</th>
+         <td>4 bytes</td>
+         <td>-3.4e38 to 3.4e38</td>
+         <td>0.0</td>
+         <td>Float</td>
+        </tr>
+        <tr>
+         <th scope="row">double</th>
+         <td>8 bytes</td>
+         <td>-1.7e308 to
+            1.7e308</td>
+         <td>0.0</td>
+         <td>Double</td>
+        </tr>
+        <tr>
+         <th scope="row">boolean</th>
+         <td>NA</td>
+         <td>NA(But allowed
+            values are true,</td>
+         <td>false</td>
+         <td>Boolean</td>
+        </tr>
+        <tr>
+         <th scope="row">char</th>
+         <td>2 bytes</td>
+         <td>0 to 65535</td>
+         <td>0(balnk spaces)</td>
+         <td>Character</td>
+        </tr>
+      </tbody>
+    </table>
+
+
+    <p><b>Literals</b><br>
+      A literal represents a constant value which can be assigned to the variables<br>
+    </p>
+    <img src="assets/images/literals.png" id="literals">
+     <p><b>Integral Literal</b><br>
+      We can specify an integral literal in the following ways.</p>
+      <p style="margin-left: 30px;"><b>Decimal literals:</b> allowed digits are 0 to 9 <br>
+         <span style="margin-left: 40px;">Ex: int x = 10;</span></p>
+
+         <p style="margin-left: 30px;"><b>Octal literals:</b> allowed digits are 0 to 7 but here literal value should be prefixed with 0(zero) <br>
+            <span style="margin-left: 40px;">Ex: int x = 010;</span></p>
+            <p style="margin-left: 30px;"><b>Hexadecimal literals: </b> the allowed digits are 0 to 9, A- F (Both lower, Upper case) literals
+         should be prefixed with 0x or oX<br>
+         <span style="margin-left: 40px;">Ex: int x = 0x10;</span></p>
+
+         <textarea rows="11" cols="60" class="textArea" readonly>
+            Ex:
+            class Test{
+              public static void main(String arg[]){
+               int x = 10;
+               int y = 010;
+               int z = 0x10;
+               System.out.println(x + "..." + y + "..." + z);
+              }
+            }
+            O/P:- 10…8…16
+          </textarea>
+         <p>Except decimal, octal, hexadecimal there is no other way to represents constant values      for the integral datatype.<br>
+            By default every integral lateral is of int datatype we can specify explicitly. An   
+             integral literal is of long type by suffixing with l or L.</p>
+             <p style="margin-left: 80px;">Ex: <br>
+             <span style="margin: 30px;">10 <i class="fa fa-arrow-right" style="margin-left: 10px;"></i> int value.</span><br>
+               <span style="margin: 30px;">10l <i class="fa fa-arrow-right" style="margin-left: 10px;"></i> long value.</span><br>
+                  <span style="margin: 30px;">long l = 10l; </span><br>
+                     <span style="margin: 30px;">int i = 10l;</span><br>
+                        <span style="margin: 30px; color: red;">C.E: possible loss of precision found : long Required:int </span></p>
+
+                        <img src="assets/images/integralLitrals.png" id="integralLitrals"> 
+                        
+         <p>There is no way to specify explicitly an integral literal is of type byte and short.
+               If the integral literal is with in the range of byte then the JVM by default treats it as byte literal.
+               Similarly short literal also.</p>
+         <p><b>Floating – point literals</b><br>
+            By default floating-point literals are double type we can specify explicitly as float type by suffixing with ‘f’ or ‘F’.
+         </p>                     
+         <p><b>Which of the following are valid declarations</b><br></p>
+           <ol>
+             <li>float f = 10.5; <i class="fa fa-close" style="color: red; margin-left: 5px;"></i>
+               <i class="fa fa-arrow-right" style="margin-left: 10px;"></i> C.E possible loss of precision</li>
+             <li>float f = 10.5f; <i class="fa fa-check" style="color: blue; margin-left: 10px;"></i></li>
+             <li>double d = 10.5; <i class="fa fa-check" style="color: blue; margin-left: 10px;"></i></li>
+             <li>double d = 10.5f; <i class="fa fa-check" style="color: blue; margin-left: 10px;"></i></li>
+             <li>double d = 10.5D; <i class="fa fa-check" style="color: blue; margin-left: 10px;"></i></li>
+           </ol>
+          <p>we can specify explicitly a floating point literal of double type by suffixing with d or D. we can also represent float-point literals by using scientific notation.<br>
+         
+          Ex: <br>
+            double d = 10e23; <br>
+            int i = 10e23; <i class="fa fa-arrow-right" style="margin-left: 10px;"></i> C.E possible loss of precision found : double required : int. </p>
+
+       <p>Floating point literals can be specified only in decimal form. i.e we can’t use octal and hexa decimal representation for floating point literals.<br>
+       Ex: <br>
+       Double d = 0x123.456; <br>
+       C.E: Malformed floating-point literal.</p>
+
+       <p><b>Which of the following are valid declarations</b></p>
+       <ol>
+          <li>float f = 123.456; <i class="fa fa-close" style="color: red; margin-left: 5px;"></i></li>
+          <li>float f = 0x123.456F; <i class="fa fa-check" style="color: blue; margin-left: 10px;"></i></li>
+          <li>float f = 0x123; <i class="fa fa-check" style="color: blue; margin-left: 10px;"></i></li>
+          <li>float f = 1.2e36; <i class="fa fa-close" style="color: red; margin-left: 5px;"></i></li>
+          <li>double d = 1.2e36; <i class="fa fa-check" style="color: blue; margin-left: 10px;"></i></li>
+       </ol>
+      
+      <p><b>Boolean Literals</b><br>
+         The only allowed values for boolean datatype are true, false.<br>
+         <b>Which of the following are valid declarations</b><br>
+         <span style="margin-left: 30px;"> 1. boolean b = true; <i class="fa fa-check" style="color: blue; margin-left: 10px;"></i></span><br>
+         <span style="margin-left: 30px;"> 2. boolean b = FALSE; <i class="fa fa-close" style="color: red; margin-left: 10px;"></i></span><br>
+         <span style="margin-left: 30px;"> 3. boolean b = 0; <i class="fa fa-close" style="color: red; margin-left: 10px;"></i></span><br>
+      </p>
+      <p><b>character literal</b><br>
+       A char literal can be represented as a single character with in single quotes.</p>
+       <ol>
+          <li>char ch = 'a'; <i class="fa fa-check" style="color: blue; margin-left: 10px;"></i></li>
+          <li>char ch = 'ab'; <i class="fa fa-close" style="color: red; margin-left: 10px;"></i> <span style="margin-left: 20px;">C.E: unclosed character literal.</span></li>
+          <li>char ch = a; <i class="fa fa-close" style="color: red; margin-left: 10px;"></i></li>
+         </ol>
+          <span>we can represent a char literal by using it’s Unicode value. For the allowed Unicode  values are 0 to 65535.</span><br>
+          <p>Ex:<br>
+            char ch = 97; <br>
+            System.out.println(ch); <i class="fa fa-arrow-right" style="margin-left: 10px;"></i> O/P: a <br>
+            char ch = 65535; <br>
+            char ch = 65536; <i class="fa fa-arrow-right" style="margin-left: 10px;"></i> C.E : possible loss of precision found : int required :char </p>
+         
+            <p>we can represent a char literal by using Unicode representation which is nothing but \uxxxx’ <br>
+            
+                  Ex: <br>
+                  char ch = '\u0061' <br>
+                  System.out.println(ch); <i class="fa fa-arrow-right" style="margin-left: 10px;"></i> O/P:a <br>
+                  char ch = '\ubeef'; <i class="fa fa-check" style="color: blue; margin-left: 10px;"></i><br>
+                  char ch = '\uface'; <i class="fa fa-check" style="color: blue; margin-left: 10px;"></i><br>
+                  char ch = '\iface'; <i class="fa fa-close" style="color: red; margin-left: 10px;"></i><br>
+                  char ch = '\uface'; <i class="fa fa-close" style="color: red; margin-left: 10px;"></i><br>
+               </p>
+            <p>we can also represent a char literal by using escape character. <br>
+               Ex: <br>
+               char ch = '\b'; <i class="fa fa-check" style="color: blue; margin-left: 10px;"></i><br>
+               char ch = '\n'; <i class="fa fa-check" style="color: blue; margin-left: 10px;"></i><br>
+               char ch = '\l'; <i class="fa fa-close" style="color: red; margin-left: 10px;"></i>
+            </p>
+        
+            <p>The following is the list of all possible escape characters in java. <br>
+               \b  <i class="fa fa-arrow-right" style="margin-left: 10px;"></i> backspace <br>
+               \n <i class="fa fa-arrow-right" style="margin-left: 10px;"></i> new line <br>
+               \r <i class="fa fa-arrow-right" style="margin-left: 10px;"></i> carriage return <br>
+               \f <i class="fa fa-arrow-right" style="margin-left: 10px;"></i> formfeed <br>
+               \t <i class="fa fa-arrow-right" style="margin-left: 10px;"></i> horizontal tab <br>
+               \’ <i class="fa fa-arrow-right" style="margin-left: 10px;"></i> single quote <br>
+               \” <i class="fa fa-arrow-right" style="margin-left: 10px;"></i> double quote <br>
+               \\ <i class="fa fa-arrow-right" style="margin-left: 10px;"></i> back slash
+            </p>
+           <p><b>Which of the following char declarations are valid?</b></p>
+              <ol>
+                 <li>char ch = 'c'; <i class="fa fa-check" style="color: blue; margin-left: 10px;"></i></li>
+                 <li>char ch = 'abc'; <i class="fa fa-close" style="color: red; margin-left: 10px;"></i></li>
+                 <li>char ch = a ; <i class="fa fa-close" style="color: red; margin-left: 10px;"></i></li>
+                 <li>char ch = 65123; <i class="fa fa-check" style="color: blue; margin-left: 10px;"></i></li>
+                 <li>char ch = 65537; <i class="fa fa-close" style="color: red; margin-left: 10px;"></i></li>
+                 <li>char ch = \uabcd; <i class="fa fa-close" style="color: red; margin-left: 10px;"></i></li>
+                 <li>char ch = '\uanuska'; <i class="fa fa-close" style="color: red; margin-left: 10px;"></i></li>
+                 <li>char ch = '\ubeef'; <i class="fa fa-check" style="color: blue; margin-left: 10px;"></i></li>
+                 <li>char ch = '\r'; <i class="fa fa-check" style="color: blue; margin-left: 10px;"></i></li>
+                 <li>char ch = '\t'; <i class="fa fa-check" style="color: blue; margin-left: 10px;"></i></li>
+                  <li>char ch = '\d'; <i class="fa fa-close" style="color: red; margin-left: 10px;"></i></li>
+              </ol>
+ 
+              <p><b>String literal</b></p>
+              <ol>
+                 <li>String s = "Durga"; <i class="fa fa-check" style="color: blue; margin-left: 10px;"></i></li>
+                 <li>String s = 'software'; <i class="fa fa-close" style="color: red; margin-left: 10px;"></i></li>
+                 <li>String s = 'a'; <i class="fa fa-close" style="color: red; margin-left: 10px;"></i></li>
+              </ol>
+
+              <p><b>Arrays</b></p>
+                   <p>An array is a data structure that represents an index collection of fixed no of homogeneous data
+                        elements. The main advantage of arrays is we can represent a group of values with single name
+                        hence readability of the code will be improved. The main limitation of arrays is they are fixed in size.
+                        i.e once we constructed an array there is no chance of increasing or decreasing bases on our
+                        requirement hence with respect to memory arrays shows worst performance we can overcome this
+                        problem by using collections.</p>
+
+            <p><b>Array Declaration</b> <br>
+               The following are the ways to declare an array. <br>
+               1) int [] a; <br>
+               2) int a[]; <br>
+               3) int [] a; <br>
+
+               The first one is recommended to use because the type is clearly separated from the name. At the first time of declarations we are not allowed to specify the size. Violation leads to C.E. <br>
+
+               Ex: <br>
+                int[] a; <i class="fa fa-check" style="color: blue; margin-left: 10px;"></i><br>
+                int[6] a; <i class="fa fa-close" style="color: red; margin-left: 10px;"></i>
+            </p>  
+            <p><b>Declaring Multidimensional Arrays</b><br>
+               The following are the valid declarations for multidimensional arrays. <br>
+               int[][] a; <br>
+               int a[][]; <br>
+               int [][]a; <br>
+               int[] a[]; <br>
+               int[] []a; <br>
+               we can specify the dimension before name of variable also, but this facility is available only for the first variable.  <br>
+               int[] a[],b[]; <i class="fa fa-check" style="color: blue; margin-left: 10px;"></i><br>
+               int[] []a,[]b; <i class="fa fa-close" style="color: red; margin-left: 10px;"></i>
+            </p> 
+            
+            <p><b>Which of the following declarations are valid?</b></p>
+             <ol>
+                <li>int[2][3] a; <i class="fa fa-close" style="color: red; margin-left: 10px;"></i></li>
+                <li>int[] a,b; <i class="fa fa-check" style="color: blue; margin-left: 10px;"></i></li>
+                <li>int[] a[],b[]; <i class="fa fa-check" style="color: blue; margin-left: 10px;"></i></li>
+                <li>int []a,[]b; <i class="fa fa-close" style="color: red; margin-left: 10px;"></i></li>
+                <li>int []a,b[]; <i class="fa fa-check" style="color: blue; margin-left: 10px;"></i></li>
+             </ol>
+
+             <p><b>Construction of Arrays <br>Single Dimension :</b>Arrays are internally implemented as object hence by using new operator we can
+               construct an array.<br>Compulsory at the time of construction we should specify the size otherwise compile time error.<br>
+
+               Ex: <br>
+int[] a = new int[10]; <i class="fa fa-arrow-right" style="margin-left: 10px;"></i> <i class="fa fa-check" style="color: blue; margin-left: 10px;"></i><br>
+int[] a = new int[]; <i class="fa fa-arrow-right" style="margin-left: 10px;"></i> C.E <br>
+It is legal to have an error with size 0 there is no C.E or R.E <br>
+int[] a = new int[0]; <br>
+If we are specifying array size with some –ve integer <br>
+int[] a = new int[-10]; <br>
+we will get R.E saying NegativeArraySizeException.</p>
+<p>The only allowed Data type to allow the size are byte, short, char, int. if we are using any other datatype we will get a C.E.</p>
+ <ul>
+     <li>int[] a = new int[10];  <i class="fa fa-check" style="color: blue; margin-left: 10px;"></i></li>
+     <li>int[] a1 = new int[10l];  <i class="fa fa-check" style="color: blue; margin-left: 10px;"></i></li>
+     <li>int[] a = new int[10l]; <i class="fa fa-arrow-right" style="margin-left: 10px;"></i> C.E possible loss of precision found: long required: int
+     <li>int[] a = new int[10.5]; <i class="fa fa-arrow-right" style="margin-left: 10px;"></i> C.E </li>
+     <li>int[] a = new int[true]; <i class="fa fa-arrow-right" style="margin-left: 10px;"></i> C.E Incompatible types found : boolean required:int.</li>
+ </ul>
+ <span>The maximum allowed Array Size in java is 2147483648.</span>
+
+
+      </div>
+     
+     <div class="exceptionhandling" *ngIf="exception">
+         <h1 class="mt-4">EXCEPTIONHANDLING</h1>
+         <b>Introduction</b><br>
+          It is an unexpected unwanted event which disturbs entire flow of the program.<br>
+          RealTimeExample:<br>
+          <ol>
+            <li>SleepingException</li>
+            <li>TirePuncharedException</li>
+          </ol>  
+      
+        <p>If we are not handling exception, the program may terminate abnormally with out releasing allocated
+resources. This is not a graceful termination. Being a good programming practice compulsory we should
+handle exceptions for graceful termination of the program.</p>
+
+<p>Exception handling means it is not repairing an exception we are providing alternative way to continue the
+program normally. For example if out programming requirement is to read the data from London file, if at
+runtime London file is not available, we have to provide a local file as the part of exception handling. So that respect of the program will be continued normally.</p>
+
+<p><b>Runtime Stack Mechanism</b></p>
+<p>For every thread JVM will create a runtime stack. All the method calls performed by the thread will be
+sorted in the corresponding runtime stack. If a method terminates normally the corresponding entry from the
+stack will be removed.</p>
+<p>After completing all the method calls the stack is empty. Just before terminating the thread JVM will destroy
+the corresponding stack.</p>
+
+<img src="assets/images/exception.jpg">
+
+  
+
+     </div>
+     <div class="declareandaccesscontrol" *ngIf="decandaccess">
+         <h1 class="mt-4">DECLARATION AND ACCESS CONTROL</h1>
+
+         
+     </div>
+
+     <div class="flowcontrol" *ngIf="flwc">
+         <h1 class="mt-4">FLOW CONTROL</h1>
+     </div>
+
+     <div class="assertions" *ngIf="assertion">
+         <h1 class="mt-4">ASSERTIONS</h1> 
+      </div>
+
+      <div class="ooconcepts" *ngIf="ooconcept">
+            <h1 class="mt-4">OO CONCEPTS</h1> 
+      </div>
+
+      <div class="innerclasses" *ngIf="innerclass">
+          <h1 class="mt-4">INNER CLASSES</h1> 
+      </div>
+      <div class="threadconcurrency" *ngIf="threadcon">
+            <h1 class="mt-4">THREADS AND CONCURRENCY</h1> 
+      </div>
+
+     <div class="fundamentalclasses" *ngIf="fundclass">
+         <h1 class="mt-4">FUNDAMENTAL CLASSES</h1>
+     </div>
+    
+     <div class="ioserialization" *ngIf="ioseriz">
+         <h1 class="mt-4">FILE I/O & SERIALIZATION</h1>
+     </div>
+
+     <div class="garbagecollector" *ngIf="garbage">
+         <h1 class="mt-4">GARBAGE COLLECTION</h1>
+     </div> 
+     
+     <div class="collectionfw" *ngIf="collection">
+         <h1 class="mt-4">COLLECTIONS FRAME WORK</h1>
+     </div> 
+
+   </div>
+ </div>
+
+
+ 
+ 
+ 
