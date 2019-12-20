@@ -87,3 +87,29 @@ body {
       margin-left: -15rem;
     }
   }
+
+
+  span.italic {
+    font-style: italic;
+  }
+
+  p.improves{
+    padding-left: 50px;
+  }
+
+  ol.NoteAbstraction{
+
+    padding-left: 70px;
+  }
+
+  b.EncapsulationDataHiding{
+    padding-left: 150px;
+  }
+
+  p.pEncapsulation{
+    padding-left: 150px;
+  }
+  p.OverLoading{
+     padding-left: 100px;
+  }
+

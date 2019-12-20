@@ -504,10 +504,166 @@ the corresponding stack.</p>
       </div>
 
       <div class="ooconcepts" *ngIf="ooconcept">
-            <h1 class="mt-4">OO CONCEPTS</h1> 
+         <h1 class="mt-4">OO CONCEPTS</h1>
+         <ol>
+            <li>Data hiding</li>
+            <li>Abstraction</li>
+            <li>Encapsulation</li>
+            <li>Tightly Encapsulated class</li>
+            <li>Is – A Relation Ship</li>
+            <li>HAS – A Relation ship</li>
+            <li>method signature</li>
+            <li>overloading</li>
+            <li>overriding</li>
+            <li> method hiding</li>
+            <li>static control flow</li>
+            <li>instance control flow</li>
+      
+            <li>constructors</li>
+            <li>coupling</li>
+            <li>cohesion</li>
+            <li>typecasting</li>
+      
+         </ol>
+         <p><b>Data Hiding:</b><br>
+            The data should not go out directly i.e outside person is not allowed to access the data this is nothing but<br />
+            <span class="italic">&ldquo;Data Hiding&rdquo;</span><br />    
+         
+            The main advantage of data hiding is we can achieve security.<br />
+            By using private modifier we can achieve this.</p>
+         <div class=row>
+            <div class="col-lg-2">
+      
+            </div>
+            <div class="col-lg-2">
+      
+               <textarea rows="9" cols="55" class="textArea" readonly>
+               Ex:
+               
+                     Class datademo
+                     {
+                     private double amount;
+                     ………
+                     }
+                     O/P:- 10…8…16
+             </textarea>
+            </div>
+      
+         </div>
+         <p>It is highly recommended to declare data members with private modifier.</p>
+      
       </div>
+    
 
-      <div class="innerclasses" *ngIf="innerclass">
+      <p><b>Abstraction:</b><br>
+      
+         Hiding implementation details is nothing but abstraction. The main advantages of abstraction are we can
+         achieve <b>security</b> as we r not highlighting internal implementation.
+         <b>Enhancement</b> will become easy. With out effecting outside person we can change our internal
+         implementation.</p>
+      <p class="improves">It improves <b>maintainability</b></p>
+      <b>Note:- </b>1. If we don’t know about implementation just we have to represent the specification then we
+      should
+      go for <b class="Abstraction">interface</b>
+      <ol start="2" class="NoteAbstraction">
+         <li> If we don’t know about complete implementation just we have partial implementation then we
+            should go for <b class="Abstraction">abstract.</b></li>
+         <li>If we know complete implementation and if we r ready to provide service then we should go for
+            concrete class</li>
+      </ol>
+
+
+      <p><b>Encapsulation:</b><br>
+         If a class follows data hiding and abstraction such type of class is said to be ‘Encapsulated’ class.</p>
+  <b class="EncapsulationDataHiding">Encapsulation = Data Hiding + Abstraction</b><br/><br/>
+  
+  <textarea rows="12" cols="55" class="textArea" readonly>
+Ex:
+            class Account
+            {
+            private int balance;
+            public void setBalance(int balance)
+            {
+            //validating the user & his permissions.
+            this.balance = balance;
+            }
+            public int getBalance()
+            {
+            //validating the user and his permissions.
+            return balance;
+            }
+            }
+           
+ </textarea>
+ <p>The data members we have to declared as private. So that outside person is not allowed to access to directly
+   we have to provide Access to our data by defining setter and getter methods. i.e hiding data behind methods
+   is the central concept of encapsulation.</p>
+   <p class="pEncapsulation">The main advantages of encapsulation are security, enhancement, maintainability</p>
+   <p><b>Tightly Encapsulated Class:</b><br>A class is said to be tightly encapsulated iff all the data members declared as private. 
+</p>
+
+<textarea rows="12" cols="55" class="textArea" readonly>
+Ex:-
+            class student
+            {
+            private String name;
+            public void setName(String name)
+            {
+            this.name = name;
+            }
+            public String getName()
+            {
+            return name;
+            }
+            }
+</textarea>
+<br/>
+<p><b>Q) which of the following classes are tightly encapsulated classes?</b></p>
+
+<textarea rows="12" cols="55" class="textArea" readonly>
+            class x
+            {
+            private int i =10;
+            private int getI();<i class="fa fa-arrow-right" style="color: red; margin-left: 10px;"></i>
+            {
+            return i;
+            }
+            }
+            class y extends x  
+            {
+            public int i = 30; <i class="fa fa-close" style="margin-left: 20px;"></i>
+            }
+            class z extends x
+            {
+            private int k = 40;
+            }
+            }
+   
+</textarea>
+<p><b>Q)
+</b></p>
+<textarea rows="12" cols="55" class="textArea" readonly>
+
+         class x
+         {
+         int i = 0;
+         }
+         class y extends x
+         {
+         private int j = 20;
+         }
+         class z extends y
+         {
+         private int k = 30;
+         }
+         }
+</textarea>
+<p>no class is tightly encapsulated if the parent class is not tightly encapsulated then no child class is tightly
+   encapsulated.</p>
+   <p><b>IS – A RelationShip
+   </b></p>
+   <i class="fa fa-arrow-right"></i>
+         <div class="innerclasses" *ngIf="innerclass">
           <h1 class="mt-4">INNER CLASSES</h1> 
       </div>
       <div class="threadconcurrency" *ngIf="threadcon">
