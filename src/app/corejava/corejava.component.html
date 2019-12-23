@@ -527,14 +527,12 @@ the corresponding stack.</p>
          </ol>
          <p><b>Data Hiding:</b><br>
             The data should not go out directly i.e outside person is not allowed to access the data this is nothing but<br />
-            <span class="italic">&ldquo;Data Hiding&rdquo;</span><br />    
+            <span class="italic"><b>&ldquo;Data Hiding&rdquo;</b></span><br />    
          
             The main advantage of data hiding is we can achieve security.<br />
             By using private modifier we can achieve this.</p>
          <div class=row>
-            <div class="col-lg-2">
-      
-            </div>
+        
             <div class="col-lg-2">
       
                <textarea rows="9" cols="55" class="textArea" readonly>
@@ -662,15 +660,653 @@ Ex:-
    encapsulated.</p>
    <p><b>IS – A RelationShip
    </b></p>
-   <i class="fa fa-arrow-right"></i>
-         <div class="innerclasses" *ngIf="innerclass">
+
+
+   <p><b>Rules for overriding</b></p>
+
+   <ol>
+      <li>The method names and arguments(including order) must be same. i.e signatures of the methods must be same. </li>
+      <li>In overriding the return types must be same but this rule is applicable only until 1.4 version but from 1.5 version onwards co-variant return types also allowed. i.e the child class method return type need not to be same as parent class method return type it’s child class also allowed. </li>
+   </ol>
+
+   <textarea rows="10" cols="60" class="textArea" readonly>
+   Ex:     
+            Parent  : Object(covariant returntype).           &#x2713;
+            Child : String, StringBuffer, Object….. 
+         
+            Parent : String    Child : Object                    &#x2717;  
+            Because String to Object is not a covariant.              
+
+            Parent : double                                       &#x2717;
+             Child : int                                                 
+   </textarea>
+   <br/>
+<p>Because co-variant return types are not applicable for primitive types.</p>
+   <br/>
+<b>Which of the following are valid overriding methods……?</b>
+   <br/>
+   <br/>
+   <textarea rows="12" cols="60" class="textArea" readonly>
+   Ex:
+            Parent  : public void m1()          &#x2713;  
+            Child : public void m1()  
+ 
+            Parent  : public int m1()            &#x2717;
+            Child : public long m1() 
+            
+            Parent  : public Object m1()        &#x2713;
+            Child : public String m1()  
+            
+            Parent  : public String m1()         &#x2717;
+            Child : public Object m1() 
+ 
+      </textarea>
+      <br/>
+     <p>
+3) final method can’t be overridden in child classes. Private methods are not visible in the child classes. Hence they won’t participate in overriding. Based on our requirement we can take exactly same declaration in child class, But It is not overriding. 
+ 
+   </p>
+      <textarea rows="12" cols="55" class="textArea" readonly>
+      Ex:
+               class P
+               {
+               private void m1()
+               {
+               
+               }
+               }
+               class C extends P
+               {
+               private void m1()
+               {
+               
+               }
+               }
+
+      </textarea>
+<br/>
+<p>Here it is not  overriding child class specific method. </p>
+<p>4) native methods can be overridden as non-native, similarly we can override abstract methods, synchronized methods.<br/> We can override a non-abstract method as abstract also </p>
+         
+
+
+
+<textarea rows="20" cols="55" class="textArea" readonly>
+   Ex:
+               class P
+               {
+               public void m1() {
+
+               }
+               }
+               abstract class C extends P
+               {
+               public abstract void m1();
+               }
+               abstract class P
+               {
+               public abstract void m1();
+               }
+               class C extends P
+               {
+               public void m1()
+               {
+
+               }
+               }
+</textarea>
+<p>The following are possible types </p>
+<img src="assets/images/RuleOverriding.PNG">
+<p>5) while overriding we are not allowed o decrease access privileges. Otherwise compile time error but we can increase access privileges. The following is the list of valid with respect to access privileges. </p>
+<img src="assets/images/RuleOverriding1.PNG">
+<p>
+6) while overriding the size of checked exceptions we are not allowed to increase in throws class but we can decrease the size of checked exceptions. But there are no restrictions on unchecked exceptions. 
+   </p>
+
+
+   <p><b>Overriding in static methods</b><br>
+   
+      A static method can’t be overridden as non-static  
+   </p>
+
+   <textarea rows="20" cols="55" class="textArea" readonly>
+   Ex:
+                  class P
+                  {
+                  public static void m1()
+                  {
+                  
+                  
+                  }
+                  }
+                  class C extends P
+                  {
+                  public void m1()
+                  {
+                  
+                  }
+                  }
+</textarea>
+
+<br/>
+<img src="assets/images/RuleOverriding2.PNG">
+<p>Similarly a non-static method can’t be overridden as static method.</p>
+
+<img src="assets/images/RuleOverriding3.PNG">
+<p>If both parent and child class methods are static then there is no compile time error or run time error it seems that overriding is happened but it is not overriding this concept is called “method hiding”. All the rules of method hiding are exactly similar to overriding, except both methods declared as static. 
+   <br/>In the case of method hiding method resolution will take care by compiler based on reference type(But not runtime object).</p>
+   <textarea rows="20" cols="55" class="textArea" readonly>
+      Ex: 
+                  class P {
+                  public static void m1() {
+                  System.out.println("parent method");
+                  }
+                  }
+                  class C extends P {
+                  public static void m1() {
+                  System.out.println("child method");
+                  }
+                  }
+                  class Test {
+                  public static void main(String arg[])
+                  {
+                  P p = new P();
+                  Case1: p.m1(); //parent method
+                  
+                  
+                  C c = new C();
+                  Case2: c.m1(); //child method
+                  
+                  P p1 = new P();
+                  Case3: p1.m1(); //parent method
+                  }
+                  }
+
+</textarea>
+
+
+<p>In the case of method hiding the method resolution will take care by compiler based on reference type. Hence method hiding is considered as <span class="italic"><b>&ldquo;static polymorphism&rdquo;</b></span> or  <span class="italic"><b>&ldquo;compile time polymorphism&rdquo;</b></span> or  <span class="italic"><b>&ldquo;early binding&rdquo;</b></span>. </p>
+
+<p><b>Overriding in the case of Variable</b><br>Overriding concept is not applicable for variables. And it is applicable only for methods. Variable resolution always takes care by compiler based on reference type. </p>
+<textarea rows="20" cols="55" class="textArea" readonly>
+   Ex:   
+            class P
+            {
+            int i = 888;
+            static
+            non-static
+            }
+            class C extends P
+            {
+            int i = 999;
+            }
+            class Test
+            {
+            public static void main(String arg[])
+            {
+            P p = new P();
+            Case1: System.out.println(p.i); //888
+            C c = new C();
+            Case2: System.out.println(c.i); //999
+
+            P p1 = new C();
+            Case3: System.out.println(p1.i); //888
+            }
+            }
+         </textarea>
+            <p><b>Comparison between Overloading and Overriding</b></p>
+            <table>
+               <tr>
+                 <th>Property </th>
+                 <th>Overloading </th>
+                 <th>Overriding </th>
+               </tr>
+               <tr>
+                 <td>Method names</td>
+                 <td>Same</td>
+                 <td>Same</td>
+               </tr>
+               <tr>
+                 <td>Arguments</td>
+                 <td>Different(at least order)</td>
+                 <td>Same(including order)</td>
+               </tr>
+               <tr>
+                 <td>signature</td>
+                 <td>Different</td>
+                 <td>Same</td>
+               </tr>
+               <tr>
+                 <td>return type</td>
+                 <td>No rule or no restriction</td>
+                 <td>Must be same until 1.4 version. But from 1.5 version onwards co-variant return types are allowed </td>
+               </tr>
+               <tr>
+                 <td>throws clause</td>
+                 <td>No restrictions </td>
+                 <td>The size of the checked exception should not be increased. But no restrictions for unchecked exceptions.</td>
+               </tr>
+               <tr>
+                 <td>Access Modifier</td>
+                 <td>No restrictions</td>
+                 <td>Should be decreased</td>
+               </tr>
+               <tr>
+                  <td> Private/final/static</td>
+                  <td>Can’t be overloaded</td>
+                  <td>Can’t be overridden</td>
+                </tr>
+                <tr>
+                  <td>Method resolution</td>
+                  <td>Method resolution takes care by compiler based on reference type and arguments</td>
+                  <td>Takes care by JVM based on runtime object</td>
+                </tr>
+                <tr>
+                  <td>Other names</td>
+                  <td>Compile time (or) static polymorphism (or) early binding </td>
+                  <td>Runtime (or) dynamic polymorphism (or) late binding </td>
+                </tr>
+             </table>
+<br/>
+<p><b>Consider the following parent class method declaration….! </b><br>Parent : public void m1(int i)</p>
+<p>Which of the following methods are allowed in the child class. </p>
+   Child : 1) private void m1(float f)throws Exception &#x2713;  (overloading) <br/>   
+       &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  2) public void m1(int i)throws classCastException &#x2713; (overloading)     
+       &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3) public final void m1(int i)   &#x2713;  (overloading)  <br/>     
+       &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   4) private abstract void m1(long l)throws Exception &#x2713; (private & abstract) <br/>   
+       &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   5) public synchronized int m1() throws IOException &#x2717; (over loading)   <br/>    
+       &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  6) public int m1(int i)   &#x2717;<br/>   
+       &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   7) public void m1(int i)throws Exception &#x2717; (Exception Increased) 
+<br/>
+<br/>
+<p><b>Static Control Flow </b></p>
+
+<img src="assets\images\StaticControlFlow.PNG">
+<br/>
+<p><b>Process of static control flow</b></p><br/>
+<p>1) Identification of static members from top to bottom <br/>i = 0 (RIWO) Read Indirect Write Only 
+<br/>j = 0 (RIWO) <br/>(1-6) Steps.</p>
+<p>2) Execution of static variable assignments and static block from top to bottom <br/>i = 0 (R & W) <br/> j = 0 (R & W) <br/>(7-12) Steps. </p>
+<p>3) Execution of Main Method.  <br/>  (12-15) Steps. <br/>If the variable is in RIWO state then we r not allowed to perform read operation directly, violation leads to C.E Saying “Illegal forward reference”.</p>
+
+<p><b>static Blocks </b>If we want to perform some activity at the time of class loading, Then we should define that activity at static blocks because these(static blocks) will execute at the time of class loading only.<br/></p>
+
+<p>We have to load native libraries at the time of class loading. Hence we have to define this activity inside the <span class="italic"><b>&ldquo;static block&rdquo;</b></span>.</p>
+<textarea rows="10" cols="55" class="textArea" readonly>
+   Ex: 
+               class Native
+               {
+               static
+               {
+               System.loadLibrary("native Library path");
+               }
+               }
+</textarea>
+<br/>
+<p>After loading database driver compulsory we should register with the driver manager. But it is not required to perform explicitly this registration because in every driver class there should be one static block to perform this registration. 
+   <br/> Hence at the time of loading the database driver automatically registration will be performed.</p>
+   <textarea rows="8" cols="55" class="textArea" readonly>
+   Ex:
+            class DatabaseDriver
+            {
+            static {
+            //Register Driver with Driver Manager
+            }
+            }
+</textarea>
+<br/>
+<p><b>Case1:- </b>with out using main method we can able to print some statement to the console. </p>
+<textarea rows="8" cols="55" class="textArea" readonly>
+   Ex:
+            class StaticDemo
+            {
+            static
+            {
+            System.out.println("Hello....I can print ");
+            System.exit(0);
+            }
+            }
+</textarea>
+<p>With out using main method, static block still we are able  to print some statement on the console.</p>
+<textarea rows="16" cols="55" class="textArea" readonly>
+
+   Ex:
+               class StaticDemo
+               {
+               static int i = m1();
+               public static int m1()
+               {
+               System.out.println("Hello ....I am able to print");
+               System.exit(0);
+               return 1;
+               }
+               }
+</textarea>
+<p><b>static control flow in parent and child classes </b></p>
+<br/>
+<img src="assets\images\StaticControlFlow1.PNG" style="width: 1200px; height: 600px;">
+<br/>
+<p><b>E:\></b>&#10142; javac StaticDemo.java <br/> Then it generates two class files Parent.class and Child.class. </p>
+<p><b>What is the O/P if I am execute java Child?</b></p>
+
+<p><b>Process:</b></p>
+<p>1) Identification of static members from parent to child. <br/>
+   &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i = 0(RIWO) <br/>
+   &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;j = 0(RIWO) <br/>
+   &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x = 0(RIWO)<br/>
+   &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y = 0(RIWO) <br/>
+   &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(0 - 11) steps.<br/>
+           </p>
+
+<p>2) Execution of static variable assignments and static blocks from parent to child<br/>
+   &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i = 10(R&W) <br/>
+   &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;j = 20(R&W) <br/> 
+   &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x = 100(R&W) <br/>
+   &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y = 200(R&W) <br/>  
+   &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(12 - 22) steps.
+
+</p>
+<p>3) Execution of child class main method.</p>
+
+<p><b>O/P:- 0 
+   <br/> 
+   &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Base static Block <br/>  
+   &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0 Derived First static Block<br/>   
+   &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Derived Second static Block <br/>  
+   &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;200<br/>   
+   &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Derived Main Method</b></p>
+   <br/>
+
+   <p>If we execute java Parent<br/>
+       Executes only Parent class members. <br/>If we remove main method in child, parent main is available because it is not overriding concept. </p>
+
+<div class="innerclasses" *ngIf="innerclass">
           <h1 class="mt-4">INNER CLASSES</h1> 
       </div>
       <div class="threadconcurrency" *ngIf="threadcon">
             <h1 class="mt-4">THREADS AND CONCURRENCY</h1> 
       </div>
+<p><b>Instance Control Flow</b></p>
+<br/>
+<img src="assets\images\InstanceControlFlow.PNG">
+<br/>
+<p><b>Process of static control flow </b><br/>
+   Instance control flow will execute at the time of object creation the following is the sequence of statements <br/> which will execute at the time of object creation.<br/> 1) Identification of Instance members  <br/>
+   &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i = 0 (RIWO) Read Indirect Write Only <br/>
+   &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;j = 0 (RIWO)<br/> 
+   &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(1-8) Steps.
+</p>
+<p>2) Execution of Instance variable assignments and Instance block from top to bottom <br/>
+   i = 0 (R & W) <br/> 
+   j = 0 (R & W) <br/>
+   (9-14) Steps. </p>
 
-     <div class="fundamentalclasses" *ngIf="fundclass">
+   <p>3) Execution of Main Method. 
+      <br/>   
+      &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(15) Steps. </p>
+<p><b>Note:-</b>  Static control flow is only one time activity and that will execute at the time of class loading. But instance control flow is not one time activity. And it will execute for every object creation separately.</p>
+<p>If the variable is in RIWO state then we r not allowed to perform read operation directly, violation leads to C.E Saying <span class="italic"><b>&ldquo;Illegal forward reference&rdquo;</b></span>. </p>
+<br/>
+<p><b>Instance control flow in parent and child classes</b></p>
+<br/>
+<div class="InstanceControlFlow1">
+<img src="assets\images\InstanceControlFlow1.PNG" style="width: 1100px;height: 600px;">
+</div>
+<br/>
+<p><b>E:\> </b>
+   <br/>javac StaticDemo.java  Then it generates two class files Parent.class and Child.class. 
+   <br/> What is the O/P if I execute java Child?</p>
+
+<p><b>Process:</b>1) Identification of Instance members from parent to child<br/>   
+
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i = 0(RIWO) <br/>
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;j = 0(RIWO)<br/> 
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x = 0(RIWO)<br/> 
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y = 0(RIWO)<br/> 
+&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(1 - 15) steps.<br/> 
+
+
+</p>
+<p>2) Execution of Instance variable assignments and instance blocks only in parent class.
+   <br/>
+   &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;i = 10(R&W)<br/>
+   &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;j = 20(R&W)<br/>
+   &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(16 - 20) steps.<br/>
+
+</p>
+
+<p>3) Execution of Parent class constructor. 
+   <br/>
+   &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;21 step<br/>
+</p>
+
+<p>4) Execution of Instance variable assignments and instance blocks in the child class  <br/> 
+   &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x = 100  <br/> 
+   &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y = 200 <br/> 
+   &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(22-27) steps.  </p>
+<p></p>
+<p>5) Execution of child class constructor. <br/>  
+   &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;28 step </p>
+   <p><b>O/P:- </b></p>
+   <img src="assets\images\InstanceControlFlow3.PNG">
+   <br/>
+   <p><b>Note:-</b><br/>Object Creation is the most costly operation. Unnecessarily we r not allowed to create more no of Objects. It will effect performance of the system. 
+   </p>
+   <p><b>Constructor</b><br/>
+      After Creation of Object compulsory we should perform initialization then only that object in a position to provide service to others. 
+      <br/>
+      At the time of Object Creation some peace of code will execute automatically to perform initialization that
+      <br/> peace of code is nothing but “Constructor”. Hence the main Objective of constructor is to perform initialization. If we don’t have constructor we will face burden. For example see the following code. 
+   </p>
+   <textarea rows="23" cols="60" class="textArea" readonly>
+
+      Ex: 
+               class Student
+               {
+               String name;
+               int rollno;
+               public static void main(String[] args)
+               {
+               Student s1 = new Student();
+               Student s2 = new Student();
+               Student s3 = new Student();
+               Student s4 = new Student();
+               s1.name = "Malli";s1.rollno = 101;
+               s2.name = "Sankar";s2.rollno = 102;
+               s3.name = "Kiran";s3.rollno = 103;
+               s4.name = "Sai";s4.rollno = 104;
+               System.out.println(s1.name+"-----"+s1.rollno);
+               System.out.println(s2.name+"-----"+s2.rollno);
+               System.out.println(s3.name+"-----"+s3.rollno);
+               System.out.println(s4.name+"-----"+s4.rollno);
+               }
+               }
+   </textarea>
+   
+   <p>To over come this type of burden constructor was introduced.  </p>
+
+   <textarea rows="20" cols="55" class="textArea" readonly>
+
+      Ex:-
+                  class Student {
+                  String name;
+                  int rollno;
+                  Student(String name, int rollno)
+                  {
+                  this.name = name;
+                  this.rollno = rollno;
+                  }
+                  public static void main(String[] args)
+                  {
+                  Student s1 = new Student("raju",101);
+                  Student s2 = new Student("mani",102);
+                  System.out.println(s1.name+"-----"+s1.rollno);
+                  System.out.println(s2.name+"-----"+s2.rollno);
+                  }
+                  }
+   </textarea>
+ <p><b>o/p:-</b></p>
+
+   
+
+   <div class="result">
+   &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;roju---101
+   <br/>
+   &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nami---102
+
+   </div>
+
+<br/>
+<p><b>Rules for Constructor</b>
+<br/>
+   While writing constructors we should follow the following rules. <br/>
+   1) The name of the constructor and name of the class must be same.<br/>
+   2) The only allowed modifiers for the constructors are public, private, protected, &#62;default&#60; If we are using any other modifier we will get C.E(Compiler Error). 
+</p>
+<textarea rows="10" cols="55" class="textArea" readonly>
+
+   Ex:
+               class Test
+               {
+               static Test()
+               {
+               ----
+               }
+               }
+</textarea>
+<p><b>C.E:-</b>modifier static not allowed here.</p>
+<p>3) return type is not allowed for the constructors even void also. If we r declaring return type then the compiler treats it as a method and hence there is no C.E and R.E(RuntimeError). </p>
+     
+<textarea rows="15" cols="55" class="textArea" readonly>
+   Ex:
+            class Test
+            {
+            void Test()
+            {
+            System.out.println("Hai .....");
+            }
+            public static void main(String arg[])
+            {
+            Test t = new Test();
+            }
+            }
+</textarea>
+<p>It is legal(But Stupid) to have a method whose name is exactly same as class name.  Here it was treated as method. </p>
+<p><b>Default Constructor</b>
+If we r not writing any constructor then the compiler always generate default constructor.  If we r writing at least one constructor then the compiler won’t generate any constructor. Hence every class contains either programmer written constructor or compiler generated default constructor but not both simultaneously. 
+</p>
+<p><b> Prototype of default constructor: </b></p>
+<ol><li>It is always no-arg constructor.</li>
+<li>It contains only one – line <b>super();</b><br/>This is a call to superclass – constructor it is no-argument call only. </li>
+<li>The modifier of the default constructor is same as class modifier(either public or default). </li>
+</ol>
+
+<br/>
+<img src="assets\images\DefaultConstructor.PNG">
+<br/>
+<p>The first line inside any constructor must be a call to super class constructor(super()) or a call to overloaded constructor of the same class(this()). If we are not taking any thing then the compiler will always place super()</p>
+<br/>
+<p><b>super() & this() in constructor</b>
+   we should use as first statement in constructor. We can use either super or this but not both simultaneously. Outside constructs we can’t use i.e we can invoke a constructor directly from another constructor only.
+</p>
+<img src="assets\images\DefaultConstructor1.PNG"><br/>
+<p><b>Overloaded Constructor </b>
+   A class can contain more than one constructors with different arguments. This type of constructors are called <span class="italic"><b>&ldquo;overloaded constructor&rdquo;</b></span>.
+</p>
+
+<br/>
+<textarea rows="25" cols="55" class="textArea" readonly>
+   Ex:-
+               class Test {
+               Test() {
+               this(10);
+               System.out.println("No-arg constructor");
+               }
+               Test(int i)
+               {
+               this(10.5);
+               System.out.println("int-arg");
+               }
+               Test(double d)
+               {
+               System.out.println("double-arg")
+               }
+               public static void main(String arg[])
+               {
+               Test t1 = new Test();
+               Test t2 = new Test(10);
+               
+               Test t3 = new Test(20.5);
+               Test t4 = new Test('a');
+               Test t5 = new Test(10l);
+               }
+               }
+
+</textarea>
+<br/>
+<p>Inheritance concept is not applicable for constructor and hence overriding is also not applicable.</p>
+<textarea rows="20" cols="100" class="textArea" readonly>
+   Ex:-
+               class Test {                          &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;     class Test { 
+               public static void m1() {           &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;      Test()  {
+               System.out.println("m1 method");     &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;   this(10);
+               m2();                                &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;      }
+               }                                      &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   Test(int i)  {                               
+               public static void m2() {              &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;  this();
+               System.out.println("m2 method");       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp; }
+               m1();                                  &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;   public static void main(String arg[])                             
+               }                                       &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   {  
+               public static void main(String arg[])   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;  System.out.println("Hai........hello");    
+               {                                        &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }
+               m1();                                    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; } 
+               System.out.println("Hello......hai");
+               }
+               }
+
+No Compilar Error and No Runtime Error                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  C.E: Recursive constructor invokation 
+</textarea>
+<br/>
+<br/>
+<p>Recursive Method invocation is runtime exception saying stack over flow error.</p>
+<br/>
+<img src="assets\images\RecursiveMethod.PNG"><br/>
+<p>Because super calls no-argument constructor in parent. when ever we r writing any constructor. It is to provide no-arument constructor also. If the parent class contains some constructors then while writing child class constructor we should take a bit care. 
+ <br/>
+   If the parent class constructor <span class="italic"><b>&ldquo;throws&rdquo;</b></span> some <span class="italic"><b>&ldquo;checked exception&rdquo;</b></span>. Compulsory the child class constructor should throw the same checked exception or it’s parent other wise compile time error.</p>
+  
+  <br/> <img src="assets\images\RecursiveMethod1.PNG"><br/>
+  <p>If the parent class constructor throws unchecked exception then child class constructor not  required to throw that exception </p>
+  <textarea rows="18" cols="55" class="textArea" readonly>
+
+      Ex:
+                  class p
+                  {
+                  p() throws ArithmeticException
+                  {
+                  
+                  }
+                  }
+                  class c extends p {
+                  c()
+                  {
+                  super();
+                  }
+                  }
+  </textarea>
+  <br/>
+  <p><b>Which of the following statements are true? </b></p>
+  <p>The first line inside constructor either super() or this() but not both simultaneously.&nbsp;&nbsp;&#x2713;</p>
+  <p>If we are not taking either super() or this() as the first line in the constructor then the compiler will always place this().&nbsp;&nbsp;&#x2717;</p><p>
+   ompiler will always generate default constructor.&nbsp;&nbsp;&#x2717;
+</p>
+<p>Constructor overriding is possible but overloading is not possible.&nbsp;&nbsp; &#x2717;</p>
+<p>Even for constructor also inheritance possible.&nbsp;&nbsp;&#x2717;</p>
+<p>If the parent class constructor throws some checked exception compulsory child class constructor 
+   should throw same exception or its parent.&nbsp;&nbsp;&#x2713;</p>
+   <br/>
+   <br/>
+   <br/>
+  <div class="fundamentalclasses" *ngIf="fundclass">
          <h1 class="mt-4">FUNDAMENTAL CLASSES</h1>
      </div>
     
@@ -688,8 +1324,3 @@ Ex:-
 
    </div>
  </div>
-
-
- 
- 
- 

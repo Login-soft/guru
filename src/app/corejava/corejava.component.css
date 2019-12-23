@@ -27,6 +27,29 @@ body {
 #literals{
   width: 400px;
 }
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 90%;
+  text-align: center;
+  
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+.result{
+  background-color: black;
+  width:200px;
+  color: white;
+  margin-left: 50px;
+}
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
 .output {
    color: red;
    font: bold;
@@ -113,3 +136,4 @@ body {
      padding-left: 100px;
   }
 
+  .InstanceControlFlow1{width: 500px;}
