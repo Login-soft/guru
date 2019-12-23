@@ -618,18 +618,18 @@ Ex:-
 <br/>
 <p><b>Q) which of the following classes are tightly encapsulated classes?</b></p>
 
-<textarea rows="12" cols="55" class="textArea" readonly>
+<textarea rows="17" cols="55" class="textArea" readonly>
             class x
             {
             private int i =10;
-            private int getI();<i class="fa fa-arrow-right" style="color: red; margin-left: 10px;"></i>
+            private int getI();&nbsp;&nbsp;&nbsp;&nbsp;&#x2713;
             {
             return i;
             }
             }
             class y extends x  
             {
-            public int i = 30; <i class="fa fa-close" style="margin-left: 20px;"></i>
+            public int i = 30;&nbsp;&nbsp;&nbsp;&nbsp;&#x2717;
             }
             class z extends x
             {
@@ -640,7 +640,7 @@ Ex:-
 </textarea>
 <p><b>Q)
 </b></p>
-<textarea rows="12" cols="55" class="textArea" readonly>
+<textarea rows="15" cols="55" class="textArea" readonly>
 
          class x
          {
@@ -662,13 +662,353 @@ Ex:-
    </b></p>
 
 
+&#10148; Also known as Composition or Aggregation.<br/>
+&#10148; There is no specific keyword, but most of the cases we can implemented by using new keyword.<br/>
+&#10148; Main advantage is reusability.<br/>
+<br/>
+ <textarea rows="15" cols="60" class="textArea" readonly>
+   Ex:
+            class engine
+            {
+            m1(){}
+            m2(){}
+            .
+            .
+            .
+            }
+            class car
+            {
+            engine e = new engine();
+            .
+            .
+            }
+            Class car has engine
+</textarea>
+<p>HAS – A relationship increases dependency b/w components and creates maintainability problems.</p>
+  
+<p><b>Method Signature</b><br/>In java method signature consists of method name and arguments list( including order also)</p>
+   <br/>
+   <img src="assets/images/methodsignature.JPG">
+   <br/>
+   <p>
+   Compiler uses method signature to resolve method calls.<br/>
+Two methods with the same signature are not allowed in any java class, violation leads to compile time
+error.
+   </p>
+    <textarea rows="15" cols="60" class="textArea" readonly>
+   Ex:
+            class Test
+            {
+            public void m1(int i)
+            {
+            }
+            public void m2()
+            {
+            }
+            public int m1(int i)
+            {
+            }
+            public void m1(int i, float f)
+            {
+            }
+            method signature 
+            }
+
+</textarea>
+
+<p><b>C.E:-</b>m1(int) is already defined in Test</p>
+<p>In java return type is not part of method signature.</p>
+<p><b>
+OverLoading</b><br/>
+Two methods r said to be overloaded iff the method names are same, But arguments are different(Atleast
+Order) Lack of overloading increases complexity of the program in the case of ‘c’ language.
+For the same requirement we should maintain different method names if arguments are same
+</p>
+<p><b>In C
+</b><br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;abs(int i) &nbsp;&nbsp;&nbsp;&nbsp;&#8594; only for int arguments.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fabs(float f) &nbsp;&nbsp;&nbsp;&nbsp;&#8594; only for float arguments.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;labs(long l) &nbsp;&nbsp;&nbsp;&nbsp;&#8594; only for long arguments.<br/>
+</p>
+<p>
+But in <b>java</b> two methods with the same name is allowed eventhough arguments r different.
+<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;abs(int i)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;abs(float f)<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;abs(long l)
+</p>
+<textarea rows="22" cols="60" class="textArea" readonly>
+   Ex:-
+            Case1:
+            class Test
+            {
+            public void m1()
+            {
+            System.out.println("no-args");
+            }
+            public void m1(int i)
+            {
+            System.out.println("int-args");
+            }
+            public void m2(double d)
+            {
+            System.out.println("double-args");
+            }
+            public static void main(String[] args)
+            {
+            Test t = new Test();
+            t.m1();
+            t.m1(10);
+            t.m1(10.5);
+            }
+            }
+</textarea>
+<p>The overloading method resolution is the responsibility of compiler based on reference type and method
+arguments. Hence overloading is considered as compile-time polymorphism or EarlyBinding.</p>
+<p><b>Automatic promotion in overloading</b></p>
+
+<textarea rows="28" cols="60" class="textArea" readonly>
+   Ex:-
+            Case2:
+            class Test
+            {
+            public void m1()
+            {
+            System.out.println("no-args");
+            }
+            public void m1(int i)
+            {
+            System.out.println("int-args");
+            }
+            public void m1(float f)
+            {
+            System.out.println("float-args");
+            }
+            public static void main(String[] args)
+            {
+            Test t = new Test();
+            t.m1();
+            t.m1(10);
+            t.m1(10l);
+            t.m1(10f);
+            t.m1('a');
+            t.m1(10.5);
+            }
+            }
+</textarea>
+
+<p>
+In the case of overloading if there is no method with the required argument then the compiler won’t raise
+immediately compile time error. First it will promote arguments to next level and checks is there any
+matched method with promoted arguments, if there is no such method compiler will promote the argument
+to the next level and checks for the matched method. After all possible promotions still the compiler unable
+to find the matched method then it raises compile time error.
+
+
+</p>
+<p>The following is the list of all possible Automatic promotion</p><br/>
+ <img src="assets/images/OverLoading1.JPG">
+ <br/>
+  <br/>
+ <textarea rows="20" cols="60" class="textArea" readonly>
+   Ex:-
+            class Test
+            {
+            public void m1(String s)
+            {
+            System.out.println("String Version");
+            }
+            public void m1(Object o)
+            {
+            System.out.println("Object Version");
+            }
+            public static void main(String arg[])
+            {
+            Test t = new Test();
+            t.m1("raju"); &nbsp;&nbsp;&#47;&#47;String Version
+            t.m1(new Object()); &nbsp;&nbsp;&#47;&#47;Object Version
+            t.m1(null);
+            }
+            }
+
+ </textarea>
+<p>In the case of overloading the more specific version will get the chance first.</p>
+ <img src="assets/images/OverLoading3.JPG">
+ <br/>
+ <textarea rows="20" cols="60" class="textArea" readonly>
+   Ex:-
+            Case3:
+            class Test
+            {
+            public void m1(String s)
+            {
+            System.out.println("String Version");
+            }
+            public void m1(StringBuffer sb)
+            {
+            System.out.println("StringVersion");
+            }
+            public static void main(String arg[])
+            {
+            Test t = new Test();
+            t.m1("raju");
+            t.m1(null);
+            }
+            }
+</textarea>
+ <br/>
+ <br/>
+<img src="assets/images/OverLoading4.JPG">
+ <br/>
+ <p>So it produces Ambiguity error.<br/>
+<b>Note:-</b> we can define a single method which can be applicable for any type of primitive argument, as
+follows<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m1(double d)</p>
+<p>By automatic promotion instead of double we can give char, byte, short, int, long, float, double.
+Based on the same approach square root method in math class is declared
+</p>
+<p>
+public static double sqrt(double d)<br/>
+If we want to declare a method which can be applicable for byte, short, char, int, long we should declare as
+follows.<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;m1(long)</p>
+<textarea rows="25" cols="60" class="textArea" readonly>
+   Ex:-
+            class Test
+            {
+            public void m1(int... i)
+            {
+            System.out.println("var-arg");
+            }
+            public void m1(int i)
+            {
+            System.out.println("int-arg");
+            }
+            public static void main(String arg[])
+            Object
+            String
+            Object
+            String StringBuffer
+            {
+            Test t = new Test();
+            t.m1(); &nbsp;&nbsp;&#47;&#47;var-arg
+            t.m1(10,20); &nbsp;&nbsp;&#47;&#47;var-arg
+            t.m1(10); &nbsp;&nbsp;&#47;&#47;int-arg
+            }
+            }
+
+</textarea>
+<br/>
+<p>var-arg method will always get least priority i.e if no other method matched then only var-arg method will
+get chance for execution.</p>
+
+
+
+<textarea rows="22" cols="65" class="textArea" readonly>
+   Ex:-
+            class Test
+            {
+            public void m1(int i, float f)
+            {
+            System.out.println("int, float");
+            }
+            public void m1(float f, int i)
+            {
+            System.out.println("float, int");
+            }
+            public static void main(String arg[])
+            {
+            Test t = new Test();
+            t.m1(10.5f, 10);
+            t.m1(10, 10.5f);
+            t.m1(10, 10); // C.E : reference to m1() is ambiguous
+            t.m1(10.5f, 10.5f);// C.E : can’t find symbol method m1(float,float)
+            }
+            }
+</textarea>
+<br/>
+<br/>
+<textarea rows="30" cols="60" class="textArea" readonly>
+   Ex:
+            class Animal
+            {
+            }
+            class Monkey extends Animal
+            {
+            }
+            class Test
+            {
+            public void m1(Animal a)
+            {
+            System.out.println("Animal Version");
+            }
+            public void m1(Monkey m)
+            {
+            System.out.println("Monkey Version");
+            }
+            public static void main(String arg[])
+            {
+            Test t = new Test();
+            Case1: Animal a = new Animal();
+            t.m1(a); //Animal Version
+            Case2: Monkey m = new Monkey();
+            t.m1(m); //Monkey Version
+            Case3: Animal a1 = new Monkey();
+            t.m1(a1); //Animal Version
+            }
+            }
+
+</textarea>
+<p>Overloading method resolution will always take care by compiler based on the reference type but not based
+on runtime object.
+</p>
+<p><b>Overriding</b><br/>What ever the parent has by default available to the child class through inheritance, If the child class is not
+satisfied with the parent class implementation then the child is allowed to overwrite that parent class method
+to provide it’s own specific implementation, this concept is nothing but “overriding”.</p>
+
+<textarea rows="30" cols="60" class="textArea" readonly>
+   Ex:
+            class P
+            {
+            public void property()
+            {
+            System.out.println("Land, gold, cash");
+            }
+            public void mary()
+            {
+            System.out.println("Subbalakshmi");
+            }
+            }
+            class C extends P
+            {
+            public void mary()
+            {
+            System.out.println("Priyanka");
+            }
+            }
+            class Test
+            {
+            public static void main(String[] args)
+            {
+            P p1 = new P();
+            Case1: p1.mary(); //Subbalakshmi
+            C c1 = new C();
+            Case2: c1.mary(); //Priyanka
+            P p2 = new C();
+            Case3: p2.mary(); //Priyanka
+            }
+            }
+</textarea>
+<p>Overriding method resolution will take care by JVM based on runtime Object. Hence overriding is
+considered as runtime polymorphism or dynamic polymorphism or latebinding.
+The process of overriding method resolution is also known as <span style="font-style: italic;"><b>“dynamic method dispatch”</b>.</span></p>
    <p><b>Rules for overriding</b></p>
-
-   <ol>
-      <li>The method names and arguments(including order) must be same. i.e signatures of the methods must be same. </li>
-      <li>In overriding the return types must be same but this rule is applicable only until 1.4 version but from 1.5 version onwards co-variant return types also allowed. i.e the child class method return type need not to be same as parent class method return type it’s child class also allowed. </li>
-   </ol>
-
+   
+      1. The method names and arguments(including order) must be same. i.e signatures of the methods must be same. 
+      2. In overriding the return types must be same but this rule is applicable only until 1.4 version but from 1.5 version onwards co-variant return types also allowed. i.e the child class method return type need not to be same as parent class method return type it’s child class also allowed. 
+   
+<br/>
+<br/>
    <textarea rows="10" cols="60" class="textArea" readonly>
    Ex:     
             Parent  : Object(covariant returntype).           &#x2713;
@@ -682,7 +1022,7 @@ Ex:-
    </textarea>
    <br/>
 <p>Because co-variant return types are not applicable for primitive types.</p>
-   <br/>
+ 
 <b>Which of the following are valid overriding methods……?</b>
    <br/>
    <br/>
@@ -706,22 +1046,22 @@ Ex:-
 3) final method can’t be overridden in child classes. Private methods are not visible in the child classes. Hence they won’t participate in overriding. Based on our requirement we can take exactly same declaration in child class, But It is not overriding. 
  
    </p>
-      <textarea rows="12" cols="55" class="textArea" readonly>
-      Ex:
-               class P
-               {
-               private void m1()
-               {
+      <textarea rows="15" cols="55" class="textArea" readonly>
+   Ex:
+            class P
+            {
+            private void m1()
+            {
                
-               }
-               }
-               class C extends P
-               {
-               private void m1()
-               {
+            }
+            }
+            class C extends P
+            {
+            private void m1()
+            {
                
-               }
-               }
+            }
+            }
 
       </textarea>
 <br/>
