@@ -1,4 +1,6 @@
-<div class="d-flex" id="wrapper">
+
+	  
+	  <div class="d-flex" id="wrapper">
    <div class="bg-light border-right" id="sidebar-wrapper">
       <div class="list-group list-group-flush">
          <a (click)="languagefundamentals()" class="list-group-item list-group-item-action bg-light">Language
@@ -449,18 +451,21 @@
             <li>int []a,[]b; <i class="fa fa-close" style="color: red; margin-left: 10px;"></i></li>
             <li>int []a,b[]; <i class="fa fa-check" style="color: blue; margin-left: 10px;"></i></li>
          </ol>
-         <p><b>Construction of Arrays <br>Single Dimension :</b>Arrays are internally implemented as object hence by
+		 
+
+     <p><b>Construction of Arrays <br>Single Dimension :</b><br>Arrays are internally implemented as object hence by
             using new operator we can
             construct an array.<br>Compulsory at the time of construction we should specify the size otherwise compile
             time error.<br>
             Ex: <br>
-            int[] a = new int[10]; <i class="fa fa-arrow-right" style="margin-left: 10px;"></i> <i class="fa fa-check"
+			
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int[] a = new int[10]; <i class="fa fa-arrow-right" style="margin-left: 10px;"></i> <i class="fa fa-check"
                style="color: blue; margin-left: 10px;"></i><br>
-            int[] a = new int[]; <i class="fa fa-arrow-right" style="margin-left: 10px;"></i> C.E <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int[] a = new int[]; <i class="fa fa-arrow-right" style="margin-left: 10px;"></i> C.E <br>
             It is legal to have an error with size 0 there is no C.E or R.E <br>
-            int[] a = new int[0]; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int[] a = new int[0]; <br>
             If we are specifying array size with some –ve integer <br>
-            int[] a = new int[-10]; <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;int[] a = new int[-10]; <br>
             we will get R.E saying NegativeArraySizeException.
          </p>
          <p>The only allowed Data type to allow the size are byte, short, char, int. if we are using any other datatype
@@ -476,6 +481,732 @@
          </ul>
          <span>The maximum allowed Array Size in java is 2147483648.</span>
       </div>
+      <p><b>Multi Dimension:</b> In java multidimensional arrays are implemented as single dimension arrays. This
+approach improves performance with respect to memory<p>
+<br>
+<img src="assets/images/MultiDimension.JPG" id="MultiDimension">
+
+<p><b>How to declare an array for the following diagrams?</b></p>
+<br>
+<img src="assets/images/MultiDimension2.JPG" id="MultiDimension2">
+<p><b>Which of the following Array declarations are valid?</b></p>
+int [][] a = new int[3][4];&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#10132; <i class="fa fa-check" style="color: blue; margin-left: 10px;"></i><br>
+int [][] a = new int[3][]; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#10132;<i class="fa fa-check" style="color: blue; margin-left: 10px;"></i><br>
+int [][] a = new int[][4]; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#10132;<i class="fa fa-close" style="color: red; margin-left: 10px;"></i><br>
+int [][] a = new int[][]; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#10132;<i class="fa fa-close" style="color: red; margin-left: 10px;"></i><br>
+int [][][] a = new int[3][4][]; &nbsp;&nbsp;&#10132;<i class="fa fa-check" style="color: blue; margin-left: 10px;"></i><br>
+int [][][] a = new int[3][][5]; &nbsp;&nbsp;&#10132;<i class="fa fa-close" style="color: red; margin-left: 10px;"></i><br>
+<p><b>Initialization of arrays</b><br>Once we created an array all it’s elements initialized with default values.</p>
+<img src="assets/images/Initializationofarrays.JPG" id="Initializationofarrays">
+<br>
+
+<br>
+<p>when ever we are trying to access an array with int index which is not in valid range then we will get
+runtime exception saying “ArrayIndexOutOfBoundsException”. But there is no C.E.
+If we are trying to access an array index with the following datatype we will get C.E.
+float, double, long, boolean.
+</p>
+<p><b>Declaration Construction and Initialization in a single line</b>
+</p>
+
+<ul>
+<li>int []a;</li>
+<li>a = new int[3];</li>
+<li>a[0] = 10;</li>
+<li>a[1] = 20;
+</li>
+<li>a[2] = 30;</li>
+</ul>
+<p>All these statements we can replace with a single line as follows.</p>
+
+
+<ul>
+<li>int[] a = &#10100;10,20,30&#10101;;</li>
+<li>String[] s = &#10100;“Chiru”,”Allu”,”Ram”,”Akil”&#10101;
+</li>
+</ul>
+<p>If we want to use the above shortcut technique compulsory we should perform declaration,
+construction initialization in a single line only. If we are dividing into 2 lines we will get C.E.
+</p>
+
+<textarea rows="7" cols="60" class="textArea" readonly>
+      Ex:
+               int[] a;
+               a = &#10100;10,20,30,40&#10101;;
+               C.E: illegal start of expression.
+               int[][] a = &#10100;&#10100;10,20&#10101;,&#10100;30,40,50&#10101;&#10101;;
+               int[][][] a = &#10100;&#10100;&#10100;10,20},&#10100;30,40&#10101;,&#10100;&#10100;50,60&#10101;,&#10100;70,80&#10101;&#10101;&#10101;;
+</textarea>
+<p><b>length Vs length();</b></p>
+<p><b>length: </b> 1) It is the final variable applicable for array objects.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2) It represents the size of the array.</p>
+<textarea rows="5" cols="60" class="textArea" readonly>
+   Ex:
+            int [] a = new int[5];
+            System.out.println(a.length()); &#10132; C.E
+            System.out.println(a.length);&nbsp;&nbsp; &#10132; 6
+</textarea>
+
+
+<p><b>length: </b> 1) 1) It is the final method applicable only for String Objects.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2) It represents the no of characters present in the String.</p>
+
+<textarea rows="5" cols="60" class="textArea" readonly>
+   Ex:
+            String s = "raju";
+            System.out.println(s.length); &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#10132; C.E
+            System.out.println(s.length());&nbsp; &nbsp;&nbsp;&#10132; 4
+
+</textarea>
+<p>In the case of Multidimensional array length variable always represent base size but not total no of
+elements.
+</p>
+<textarea rows="5" cols="60" class="textArea" readonly>
+   Ex:
+            int[][] a = new [3][2];
+            System.out.println(a.length);
+            System.out.println(a[0].length);
+
+
+</textarea>
+<p>There is no variable which represents the total no of elements present in multidimensional arrays.</p>
+<p><b>Anonymous Arrays
+</b><br>
+Some times we can declare an array with out name also such type of arrays are called anonymous
+arrays.<br>
+The main objective of anonymous arrays is just for temporary usage. We can create an anonymous
+arrays as follows
+</p>
+<textarea rows="18" cols="60" class="textArea" readonly>
+   Ex:
+            new int[] {10,20,30} &nbsp; &nbsp;&nbsp;&#9747;
+            class Test
+            {
+            public static void main(String arg[])
+            {
+            System.out.println(sum(new int[]{10,20,30,40}));
+            }
+            public static int sum(int[] a)
+            {
+            int total = 0;
+            for(int i = 0; i< a.length;i++)
+            {
+            total = total + a[i];
+            }
+            return total;
+            }
+            }
+
+</textarea>
+<p><b>Array Element Assignments</b><br>
+In the case of primitive arrays as array element any datatype is allowed which can be implicitly
+promoted to the declared type.
+</p>
+<textarea rows="12" cols="75" class="textArea" readonly>
+   Ex:
+            int [] a = new int[10];
+            in this case the following datatypes are allowed as array elements.
+            byte, short, int, char.
+            a[0] = 10;
+            a[1] = 'a';
+            byte b = 20;
+            a[2] = b;
+            a[3] = 10.5; &nbsp; &nbsp;&nbsp;&#9747; possible loss of precision. found : double
+            required: int
+</textarea>
+<p>in the case of object arrays as array elements we can provide either declared type object or it’s child
+class objects.</p>
+<ul>
+<li>
+Number[] n = new Number[6];
+
+</li>
+<li>n[0] = new Integer(10);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#10132; <i class="fa fa-check" style="color: blue; margin-left: 10px;"></i></li>
+<li>n[1] = new Long(10l);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#10132; <i class="fa fa-check" style="color: blue; margin-left: 10px;"></i>
+</li>
+<li>n[2] = new String("raju");
+
+&nbsp;&nbsp;&#10132;<i class="fa fa-close" style="color: red; margin-left: 10px;"></i>
+ Incompatible types found : String.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;required : Number.</li>
+
+
+</ul>
+<img src="assets/images/ArrayElementAssignments.JPG" id="ArrayElementAssignments">
+<p>If we declare an array of interface type we are allowed to provide it’s implementation class object as
+elements.<br>
+Runnable[] = new Runnable[]<br>
+r[0] = new Thread();</p>
+
+<p>If we declare an array of interface type we are allowed to provide it’s implementation class object as
+elements.
+</p>
+
+<ul>
+<li>Runnable[] = new Runnable[]</li>
+<li>r[0] = new Thread();
+</li></ul>
+<p><b>Array Variable Assignments
+</b><br>
+A char element can be promoted as the int element but a char array can’t be prompted to int array</p>
+
+<textarea rows="10" cols="75" class="textArea" readonly>
+
+Ex:
+int [] a = new int[6];
+int [] b = a;
+char[] ch = {'a','b','c'};
+int [] c = ch; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#10132; Incompatible types found : char[]
+required:int[]
+</textarea>
+
+<p><b>which of the following promotions are possible?</b></p>
+<ul>
+<li>int &#10132; double
+</li><i class="fa fa-check" style="color: blue; margin-left: 10px;"></i>
+<li>float &#10132; long</li><i class="fa fa-close" style="color: red; margin-left: 10px;"></i>
+<li>int[] &#10132; float[]</li><i class="fa fa-close" style="color: red; margin-left: 10px;"></i>
+<li>char[] &#10132; int[]</li><i class="fa fa-close" style="color: red; margin-left: 10px;"></i>
+<li>boolean &#10132; int</li><i class="fa fa-close" style="color: red; margin-left: 10px;"></i>
+<li>int &#10132; Boolean</li><i class="fa fa-close" style="color: red; margin-left: 10px;"></i>
+
+
+</ul>
+<p>when ever we are assigning one array to another array compiler will check only the types instead of
+sizes
+<ul>
+<li>int[] a = &#10100;10,20,30,40&#10101;</li>
+<li>int[] b = &#10100;60,70&#10101;</li>
+</ul>
+<img src="assets/images/JavaImage1.JPG" id="JavaImage1">
+
+
+<br>
+<p>See the following example.</p>
+
+<textarea rows="10" cols="75" class="textArea" readonly>
+   Ex:
+            int [][] a = new int[3][];
+            a[0] = new int[4];
+            a[1] = new int[4][5]; &#10132; Incompatible types found: int[][]
+            required: int[]
+            a[2] = 10; &#10132; Incompatible types found: int
+            required: int[]
+</textarea>
+
+<p><b>Types of Variables</b><br>
+Based on the type of value represented by the variable all the variables are divided into two types.
+</p>
+<img src="assets/images/TypesofVariables.JPG" id="TypesofVariables">
+<p>Base on the purpose and position of declaration all variables are divided into 3 types.<br>
+1) instance variables<br>
+2) static variables<br>
+3) local variables<br>
+</p>
+
+<p><b>instance variables
+</b><br>
+if the value of a variable is varied from object to object. Such type of variables are called
+instance variables. For every object a separate copy of instance variables will be created.<br>
+
+Instance variables will be crated at the time of object creation and will be destroyed at the
+time of object destruction i.e the scope of instance variables is exactly same as the scope of
+object.<br>
+We have to declare instance variables with in the class but outside of any method (or)
+constructor or block.
+</p>
+<p>For the instance variables no need to perform initialization. JVM will always provide values.</p>
+<textarea rows="12" cols="75" class="textArea" readonly>
+   Ex:
+            class Test
+            {
+            int i;
+            public static void main(String arg[])
+            {
+            Test t = new Test();
+            System.out.println(t.i);
+            }
+            }
+</textarea>
+
+<p>Instance variables also known as ‘attributes’.</p>
+<p><b>static variable</b><br>
+if the value of a variable is fixed for all objects then it is not recommended to declare that variable at
+instance level. Such type of variables we have to declare at class level by using static keyword.<br>
+For the static variables a single copy will be created at class level and shared by all objects of that
+class.<br>
+Static variables should be declared with in the class but outside of any method or block or
+constructor.<br>
+Static variables will be created at the time of class loading and destroyed at the time of unloading.
+We can access static variables either by using class name or by using object reference using class
+name is recommended.<br>
+
+</p>
+<textarea rows="15" cols="75" class="textArea" readonly>
+   Ex:
+            class Test
+            {
+            int i;
+            static int j = 10;
+            public static void main(String arg[])
+            {
+            Test t1 = new Test();
+            t1.i = 888;
+            t1.j = 999;
+            Test t2 = new Test();
+            System.out.println(t2.i+" ----"+t2.j);
+            }
+            }
+</textarea>
+<p><b>O/P:-</b>10----999</p>
+<br>
+
+<img src="assets/images/staticvariables.PNG" id="staticvariables">
+<p>For the static variables no need to perform initialization JVM will always provide default values.</p>
+<textarea rows="12" cols="75" class="textArea" readonly>
+   Ex:
+            class Test
+            {
+            static int i;
+            public static void main(String arg[])
+            {
+            System.out.println(i); &#10132; 0
+            }
+            }
+</textarea>
+
+<p><b>LocalVariables</b><br>
+
+If we are declaring a variable with in a method or constants or block such type of variables are called
+local variables. Local variables also known as temporary variable or ‘automatic variable’. Local
+variables will be created as the part of method execution and will be destroyed once the method
+completes.<br>
+For the local variables JVM won’t provide any default values. Before using a local variable
+compulsory we should perform initialization explicitly otherwise compile time error.
+
+</p>
+<textarea rows="18" cols="90" class="textArea" readonly>
+	Ex:
+		class Test
+		{
+		public static void main(String arg[])
+		{
+		int i;
+		System.out.println(i);
+		}
+		}
+		C.E: variable ‘i’ might not have been initialized.
+		class Test
+		{
+		public static void main(String arg[])
+		{
+		int i;
+		System.out.println("Hello");
+		}
+		}
+</textarea>
+<p><b>O/P:-</b>Hello</p>
+<P>Because we didn’t use ‘i’.</P>
+<textarea rows="15" cols="75" class="textArea" readonly>
+	Ex:
+		class Test
+		{
+		public static void main(String arg[])
+		{
+		int i;
+		if(arg.length 	&gt; 0)
+		{
+		i = 10;
+		}
+		System.out.println(i);
+		}
+		}
+</textarea>
+<p>C.E: variable ‘i’ might not have been initialized because we may give or not arguments at
+runtime so before that compiler will generate error.</p>
+
+<textarea rows="18" cols="75" class="textArea" readonly>
+	Ex:
+		class Test
+		{
+		public static void main(String arg[])
+		{
+		int i;
+		if(arg.length 	&gt; 0)
+		{
+		i = 10;
+		}
+		else
+		{
+		i = 20;
+		}
+		System.out.println(i);
+		}
+		}
+</textarea>
+
+<p><b>O/P:-</b>
+
+
+
+
+
+Because if we give arguments 10 will be initialized other wise 20 will be initialized.<br>
+It is not good programming practice to perform initialization in logical blocks for local variables
+because they may not execute at runtime.<br>
+The only applicable modifier for the local variable is final. If we are using any other modifier we will
+get compile time error.<br>
+For the static and instance variables JVM will always provide default values. But for the local
+variables JVM won’t provide default values compulsory we should perform initialization before
+using.
+</p>
+
+
+
+<p><b>Un initialized Arrays</b></p>
+
+
+<textarea rows="15" cols="75" class="textArea" readonly>
+	Ex:
+		class Test
+		{
+		int[] a;
+		public static void main(String arg[])
+		{
+		Test t = new Test();
+		System.out.println(t.a); &#10132; null
+		System.out.println(t.a[0]); &#10132; NullPointerException
+		}
+		}
+</textarea>
+<p><b>Instance Level</b></p>
+<p>
+1) int[] a;<br>
+System.out.println(objectref.a) &#10132; null<br>
+System.out.println(objectref.a[0]) &#10132; NullPointerException.<br>
+
+2) int[] a = new int[6];<br>
+System.out.println(objectref.a); &#10132; [I@123<br>
+System.out.println(objectref.a[0]); &#10132;  0;
+
+</p>
+
+<p><b>Satic level</b></p>
+<br>
+<img src="assets/images/Locallevel.PNG" id="Locallevel">
+<br>
+<p><b>Note: </b>If we are creating an array all it’s elements are automatically initialized with default values.
+Even though it is local array.</p>
+
+
+<p><b>var- arg methods</b>
+
+From 1.5 version on words we are allowed to declare a method with variable no of arguments such type of
+methods are called var-arg methods.<br>
+We can declare a var-arg methoda as follows<br>
+m1(int… i);<br>
+this methods is applicable for any no of int arguments including zero no of arguments.
+
+</p>
+
+<textarea rows="15" cols="75" class="textArea" readonly>
+	Ex:
+		class Test
+		{
+		public static void m1(int... i)
+		{
+		System.out.println("var-arg methods");
+		}
+		public static void main(String arg[])
+		{
+		m1(); &nbsp;&nbsp;&nbsp;&#10132; var-arg methods
+		m1(10); &nbsp;&nbsp;&nbsp;&#10132; var-arg methods
+		m1(10,20); &nbsp;&nbsp;&nbsp;&#10132; var-arg methods
+		m1(10,20,30); &nbsp;&nbsp;&nbsp;&#10132; var-arg methods
+		}
+		}
+</textarea>
+
+
+<p>
+
+‘var-arg’ methods internally implemented by using single dimensional arrays. Hence we can differentiate
+arguments by using index.
+</p>
+<textarea rows="22" cols="75" class="textArea" readonly>
+	Ex:
+		class Test
+		{
+		public static void main(String arg[])
+		{
+		sum(10,20);
+		sum(10,20,30,40);
+		sum(10);
+		sum();
+		}
+		public static void sum(int... a)
+		{
+		int total = 0;
+		for (int i=0;i&lt;a.length ;i++ )
+		{
+		total = total+a[i];
+		}
+		System.out.println("The sum is:"+total);
+		}
+		}
+</textarea>
+<p><b>O/P:-</b></p>
+<br>
+<img src="assets/images/Localleveloutput.PNG" id="Localleveloutput">
+<br>
+
+<p>
+
+
+We can mix general parameter with var-arg parameter.<br>
+Ex:<br>
+m1(char ch, int…a)<br>
+If we are mixing general parameters with var-arg parameter then var-arg parameter must be the last
+parameter otherwise compile time error.<br>
+Ex:<br>
+m1(int… a, float f) &nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-check"
+               style="color: blue; margin-left: 10px;"></i><br>
+m1(float f, int… a)&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-close"
+               style="color: red; margin-left: 10px;"></i><br>
+we can’t take more than one var-arg parameter in var-arg method otherwise C.E.<br>
+m1(int… a double… d)&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-close"
+               style="color: red; margin-left: 10px;"></i><br>
+which of the following are valid var-arg declarations.<br>
+m1(int... a)&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-check"
+               style="color: blue; margin-left: 10px;"></i><br>
+m1(int. ..a) &nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-close"
+               style="color: red; margin-left: 10px;"></i>&nbsp;&nbsp;&nbsp;&nbsp;C.E: malformed function<br>
+m1(char ch, int... a)&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-check"
+               style="color: blue; margin-left: 10px;"></i><br>
+m1(int... a, char ch)&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-close"
+               style="color: red; margin-left: 10px;"></i><br>
+m1(int...a, boolean... b)&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-check"
+               style="color: blue; margin-left: 10px;"></i><br>
+
+
+
+
+
+</p>
+
+<textarea rows="20" cols="75" class="textArea" readonly>
+	Ex:
+		class Test
+		{
+		public static void m1(int i)
+		{
+		System.out.println("General method");
+		}
+		public static void m1(int... i)
+		{
+		System.out.println("var-arg method");
+		}
+		public static void m1(String arg[])
+		{
+		m1();
+		m1(10,20);
+		m1(10);
+		}
+		}
+</textarea>
+<p>
+
+Var-arg method will always get least priority i.e if no other method matched then only var-arg method will
+be executed.</p>
+
+
+<p><b>Command line arguments & main() metho</b>JVM always calls main method to start the program. Compiler is not responsible to check whether the class
+contain main() or not. Hence if we are not the main method we won’t get any C.E. But at runtime JVM
+raises NoSuchMethodError:main</p>
+
+<img src="assets/images/commandlineargument.PNG" id="commandlineargument">
+<br>
+
+<p>If we perform any changes in main() we will get NoSuchMethodError:main() at runtime. But no C.E.
+The main() can be declared as final and synchronized.</p>
+
+
+<p><b>Which of the following main() are valid?</b></p>
+
+<p>
+
+
+
+public static void main(String arg)&#10100;&#10101;&nbsp;&nbsp;&nbsp; &#10132;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-close"
+               style="color: red; margin-left: 10px;"></i><br>
+public static void main(String arg[])&#10100;return 10;&#10101; &nbsp;&nbsp;&nbsp;&#10132;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-close"
+               style="color: red; margin-left: 10px;"></i><br>
+public void main(String arg[])&#10100;&#10101; ;&nbsp;&nbsp;&nbsp; &#10132; &nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-close"
+               style="color: red; margin-left: 10px;"></i><br>
+public static final synchronized main(String arg[])&#10100;&#10101; &nbsp;&nbsp;&nbsp;&#10132;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-close"
+               style="color: red; margin-left: 10px;"></i><br>
+public static final synchronized void main(String arg[])&#10100;&#10101; &nbsp;&nbsp;&nbsp;&#10132;<i class="fa fa-check"
+               style="color: blue; margin-left: 10px;"></i><br>
+public static final void main(String arg[])&#10100;&#10101;&nbsp;&nbsp;&nbsp;&#10132;<i class="fa fa-check"
+               style="color: blue; margin-left: 10px;"></i><br>
+
+</p>
+<p><b>Command line arguments</b>
+
+
+<br>
+We can send command line argument to the main() by using<br>
+arg[0] &nbsp;&nbsp;&nbsp;&#10132; first command line argument<br>
+arg[0] &nbsp;&nbsp;&nbsp;&#10132; first command line argument<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-<br>
+args.length &nbsp;&nbsp;&nbsp;&#10132; no of command line arguments<br>
+</p>
+
+
+<p><b>write a code to display all command line arguments?</b></p>
+
+<textarea rows="10" cols="95" class="textArea" readonly>
+	Ex:
+		for (int i = 0;i < args.length ;i++ )
+		{
+		System.out.println(arg[i]);
+		}
+		for (int i = 0;i <= args.length ;i++ )
+		{
+		System.out.println(arg[i]); &nbsp;&nbsp;&nbsp;&#10132; C.E ArrayIndexOutOfBoundsException
+		}
+</textarea>
+
+
+<p><b>Java coding Standards</b></p>
+<p><b>Coding standards for classes</b>Usually class name should be noun. Should starts with upper case letter and if it contain multiple
+words every inner words also should start with capital letters.</p>
+<p>
+Ex:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;String<br>
+&nbsp;&nbsp;&nbsp;&nbsp;StringBuffer<br>
+&nbsp;&nbsp;&nbsp;&nbsp;NumberFormat<br>
+&nbsp;&nbsp;&nbsp;&nbsp;CustomerInformation
+</p>
+<p><b>Coding standards for Interfaces</b>
+
+Usually interface named should be adjective, starts with capital letters and if it contains multiple
+words, every inner word also should starts with capital letter.
+</p>
+
+<p>
+
+Ex:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Runnable<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Serializable<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Clonable<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Movable<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Transferable<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Workable
+
+</p>
+
+
+<p><b>Coding standards with methods</b><br>
+Values should be either verbs or verb + noun combination.<br>
+Starts with lower case and every inner words starts with upper case(this convention is also called
+camel case convention).<br>
+Ex:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;getName(), getMessage(), toString(), show(), display().</p>
+
+<p><b>Coding standards for variables</b><br>
+
+
+Usually the variable starts with noun and every inner word should start with upper case i.e camel
+case convention.<br>
+Ex:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Name, rollno, bandwidth, totalNumber.
+</p>
+
+<p><b>Coding standards for constants</b><br>
+
+It should be noun, it should contain only upper case letters and works are separated with underscores.<br>
+Ex:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;MAX_SIZE, MIN_PRIORITY, COLLEGE_NAME.
+
+</p>
+
+<p><b>Java Been Coding Conventions</b><br>
+
+A java bean is a normal java class with private properties & public getter and setter methods.
+
+</p>
+
+<textarea rows="15" cols="75" class="textArea" readonly>
+	Ex:
+		public class StudentBeen
+		{
+		private String name;
+		public String getName()
+		{
+		return name;
+		}
+		public void setName(String name)
+		{
+		this.name = name;
+		}
+		}
+</textarea>
+
+
+<p><b>Syntax for getterMethod</b><br>
+
+Compulsory it should be public & should not contain any arguments.<br>
+For the non boolean property xxx the following is syntax of getter method<br>
+public datatype getXxx()<br>
+&#10100;<br>
+return xxx;<br>
+&#10101;<br>
+For the boolean property xxx the following is the syntax<br>
+public boolean getXxx() or isXxx()<br>
+&#10100;<br>
+return xxx;<br>
+&#10101;
+
+</p>
+
+<p><b>Syntax of setter Method</b><br>
+
+It should be public and return type should be void. For any propertyxxx<br>
+public void setXxx(datatype xxx)<br>
+&#10100;<br>
+This.xxx = xxx;<br>
+&#10101;<br>
+</p>
+
+
+<p><b>To register a listener</b><br>
+
+
+To register myActionListener x which of the following is valid coding convention.<br>
+public void addMyActionListener(myActionListener x);&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-check"
+               style="color: blue; margin-left: 10px;"></i><br>
+public void addActionListener(myActionListener x);&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-close"
+               style="color: red; margin-left: 10px;"></i><br>
+public void registerMyActionListener(myActionListener x);&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-close"
+               style="color: red; margin-left: 10px;"></i><br>
+Similarly to un register myActionListener x which of the following are valid coding convention.<br>
+public void removeMyActionListener(myActionListener x);<br>
+public void removeActionListener(myActionListener x);<br>
+public void registerMyActionListener(myActionListener x);<br>
+
+</p>
+	  
+	  
+	  
+	  
+	  
+	  
+	  
       <div class="exceptionhandling" *ngIf="exception">
        
 <h1 class="mt-4">EXCEPTIONHANDLING</h1>
